@@ -5,8 +5,9 @@ import './index.css';
 import './vars.css';
 
 import App from './src/App';
+import FontAwesomeInit from './src/fontAwesome/FontAwesomeInit';
 
-
+FontAwesomeInit();
 const container = document.getElementById('root');
 if (container != null) {
   const root = createRoot(container);
