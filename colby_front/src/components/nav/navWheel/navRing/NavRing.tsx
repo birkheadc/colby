@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { animated, useSpring } from 'react-spring';
+import { start } from 'repl';
 import { INavOption } from '../navOption/INavOption';
 import NavIcons from './navIcon/NavIcons';
 import './NavRing.css'
@@ -7,36 +8,83 @@ import './NavRing.css'
 interface INavRingProps {
   options: INavOption[],
   navIcons: JSX.Element,
-  select(selection: INavOption): void
+  select(selection: INavOption): void,
+  selection: number
 }
 
 function NavRing(props: INavRingProps): JSX.Element {
 
+  let startAngle = 0;
   const ROTATION_INCREMENT: number = 360 / props.options.length;
+
+  let prevRotation: number = (props.selection * -1 + props.options.length) * ROTATION_INCREMENT;
+  const [rotation, setRotation] = React.useState((props.selection * -1 + props.options.length) * ROTATION_INCREMENT);
+  const [isRotating, setRotating] = React.useState(false);
+  const [selection, setSelection] = React.useState(props.selection);
 
   const [ringSpring, ringSpringApi] = useSpring(() => ({
     from: {
-      transform: 'rotate(0deg)'
+      transform: 'rotate(' + rotation + 'deg)',
     }
   }));
 
-  function animateRotate(degree: number): void {
-    // console.log("ROTATING TO: " + degree);
+  function animateRotation(degree: number): void {
     ringSpringApi.start({
       to: {
         transform: 'rotate(' + degree + 'deg)'
+      },
+      config: {
+        mass: 0.5,
+        tension: 600,
+        friction: 50,
+        clamp: true
       }
-    })
+    });
   }
-  
-  let startAngle: number = 0;
-  let currentRotation: number = 0;
 
-  function snapToNearestIncrement(): void {
-    const target = Math.round(currentRotation / ROTATION_INCREMENT) * ROTATION_INCREMENT;
-    currentRotation = target;
-    animateRotate(target);
+  function animateSnap(degree: number): void {
+    ringSpringApi.start({
+      to: {
+        transform: 'rotate(' + degree + 'deg)'
+      },
+      config: {
+        mass: 5,
+        tension: 600,
+        friction: 100,
+        clamp: true
+      }
+    });
   }
+
+  React.useEffect(() => {
+    let newSelection = (Math.round(rotation / ROTATION_INCREMENT) * -1 + props.options.length) % props.options.length;
+    if (newSelection < 0) {
+      newSelection += props.options.length;
+    }
+    if (newSelection === props.options.length) {
+      newSelection = 0;
+    }
+    if (newSelection !== selection) {
+      setSelection(newSelection);
+    }
+    if (isRotating) {
+      animateRotation(rotation);
+    }
+    else {
+      animateSnap(rotation);
+    }
+  }, [rotation, isRotating])
+
+  React.useEffect(() => {
+    props.select(props.options[selection]);
+  }, [selection]);
+
+  React.useEffect(() => {
+    if (isRotating === false) {
+      const target = Math.round(rotation / ROTATION_INCREMENT) * ROTATION_INCREMENT;
+      setRotation(target);
+    }
+  }, [isRotating]);
 
   function calculateAngleFromScreenCenterToCursor(clientX: number, clientY: number): number {
     const screenCenter = {
@@ -53,8 +101,10 @@ function NavRing(props: INavRingProps): JSX.Element {
   }
 
   const handleRotateStart = (e: React.MouseEvent): void => {
+    prevRotation = rotation;
+    setRotating(true);
     const angle = calculateAngleFromScreenCenterToCursor(e.clientX, e.clientY);
-    startAngle = angle - currentRotation;
+    startAngle = angle - rotation;
 
     window.addEventListener('pointermove', handleRotate);
     window.addEventListener('pointerup', handleRotateStop);
@@ -64,22 +114,19 @@ function NavRing(props: INavRingProps): JSX.Element {
 
   const handleRotate = (e: PointerEvent): void => {
     e.preventDefault();
-
     const angle = calculateAngleFromScreenCenterToCursor(e.clientX, e.clientY);
     let target = angle - startAngle;
-
-    while (Math.abs(target - currentRotation) > 180) {
-      target = target > currentRotation ? target - 360 : target + 360;
+    while (Math.abs(target - prevRotation) > 180) {
+      target = target > prevRotation ? target - 360 : target + 360;
     }
-    currentRotation = target;
-    animateRotate(target);
-    console.log("CURRENT: " + currentRotation + " | TARGET: " + target + " | START: " + startAngle);
+    prevRotation = target;
+    setRotation(target);
   }
 
   const handleRotateStop = (): void => {
     window.removeEventListener('pointermove', handleRotate);
     document.body.style.setProperty('overscroll-behavior', 'auto');
-    snapToNearestIncrement();
+    setRotating(false);
   }
 
   return (

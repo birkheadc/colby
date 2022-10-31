@@ -40,6 +40,8 @@ function NavWheel(props: INavWheelProps): JSX.Element {
     },
   ];
 
+  const ROTATION_INCREMENT: number = 360 / NAV_OPTIONS.length;
+
   const location = useLocation();
 
   const [currentSelection, setCurrentSelection] = React.useState(getCurrentPage());
@@ -55,7 +57,7 @@ function NavWheel(props: INavWheelProps): JSX.Element {
 
   return (
     <div className='nav-wheel'>
-      <NavRing navIcons={<NavIcons options={NAV_OPTIONS} />} options={NAV_OPTIONS} select={(selection: INavOption) => {setCurrentSelection(selection)}} />
+      <NavRing selection={NAV_OPTIONS.findIndex(o => o.title === currentSelection.title)} navIcons={<NavIcons options={NAV_OPTIONS} />} options={NAV_OPTIONS} select={(selection: INavOption) => {setCurrentSelection(selection)}} />
       <NavGoButton navigate={handleNavigate} selection={currentSelection}/>
     </div>
   );
