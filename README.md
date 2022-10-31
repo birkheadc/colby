@@ -12,7 +12,7 @@ Tangent to this goal, I'll also be focusing on animation, which is also somethin
 
 ## Getting away form `create-react-app`
 
-This app was *not* created with `create-react-app`. Lately I've been focused on building my own React applications "by hand", and I've found it to be far easier, as well as far more rewarding, to do so.
+This app was *not* created with `create-react-app`. Lately I've been focused on building my own React applications "by hand", and I've found doing so to be far easier, as well as far more rewarding, than I expected.
 
 The basic steps I use go as follows:
 
