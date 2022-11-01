@@ -130,7 +130,7 @@ function NavRing(props: INavRingProps): JSX.Element {
   }
 
   return (
-    <animated.div className='nav-ring' onPointerDown={handleRotateStart} style={ringSpring}>
+    <animated.div className='nav-ring' onPointerDown={handleRotateStart} style={{ color: isRotating ? 'var(--clr-accent-b)' : 'var(--clr-accent-c)', ...ringSpring}}>
       {props.navIcons}
     </animated.div>
   );

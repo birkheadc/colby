@@ -3,6 +3,7 @@ import './NavWrapper.css'
 import { animated, useSpring } from 'react-spring';
 import { useNavigate } from 'react-router-dom';
 import NavWheel from './navWheel/NavWheel';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface INavWrapperProps {
 
@@ -15,11 +16,23 @@ function NavWrapper(props: INavWrapperProps) {
 
   const navAnimationStates = {
     closed: {
+      backdropFilter: 'blur(0px)'
+    },
+    open: {
+      backdropFilter: 'blur(2px)'
+    }
+  };
+
+  const [navSpring, navSpringApi] = useSpring(() => ({
+    from: navAnimationStates.closed
+  }));
+  const navWrapperAnimationStates = {
+    closed: {
       transform: 'translate(0%, 0%) scale(var(--nav-scale))',
-      width: 100,
-      height: 100,
-      top: '0%',
-      right: '0%'
+      width: 75,
+      height: 75,
+      top: '1%',
+      right: '2%'
     },
     open: {
       transform: 'translate(50%, -50%) scale(var(--nav-scale))',
@@ -30,17 +43,23 @@ function NavWrapper(props: INavWrapperProps) {
     }
   };
 
-  const [navSpring, navSpringApi] = useSpring(() => ({
-    from: navAnimationStates.closed
+  const [navWrapperSpring, navWrapperSpringApi] = useSpring(() => ({
+    from: navWrapperAnimationStates.closed
   }));
 
   function animateOpenNav(): void {
+    navWrapperSpringApi.start({
+      to: navWrapperAnimationStates.open
+    });
     navSpringApi.start({
       to: navAnimationStates.open
     });
   };
 
   function animateCloseNav(): void {
+    navWrapperSpringApi.start({
+      to: navWrapperAnimationStates.closed
+    });
     navSpringApi.start({
       to: navAnimationStates.closed
     });
@@ -75,16 +94,16 @@ function NavWrapper(props: INavWrapperProps) {
       );
     }
     return (
-      <button className='nav-open-button' onClick={() => setOpen(true)}>OPEN</button>
+      <button className='nav-open-button' onClick={() => setOpen(true)}><FontAwesomeIcon icon='diamond' /></button>
     );
   }
 
   return (
-    <nav>
-      <animated.div className='nav-wrapper' style={navSpring}>
+    <animated.nav style={navSpring}>
+      <animated.div className='nav-wrapper' style={navWrapperSpring}>
         {generateNavContents()}
       </animated.div>
-    </nav>
+    </animated.nav>
   );
 }
 

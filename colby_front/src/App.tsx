@@ -14,7 +14,7 @@ function App(props: IAppProps): JSX.Element  {
   function calculateNavScale(): number {
     const hWidth = window.innerWidth / 2;
     const hHeight = window.innerHeight / 2;
-    const MAX_WIDTH = 800;
+    const MAX_WIDTH = 500;
     const SCALE = 0.003;
 
     return SCALE * Math.min(hWidth, hHeight, MAX_WIDTH);
@@ -30,6 +30,7 @@ function App(props: IAppProps): JSX.Element  {
 
   return (
     <BrowserRouter>
+    <div id='background'></div>
       <MainWindow />
     </BrowserRouter>
   );

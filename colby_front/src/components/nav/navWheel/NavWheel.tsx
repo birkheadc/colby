@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { animated, useSpring } from 'react-spring';
 import NavGoButton from './navGoButton/NavGoButton';
 import { INavOption } from './navOption/INavOption';
 import NavIcons from './navRing/navIcon/NavIcons';
@@ -42,6 +43,22 @@ function NavWheel(props: INavWheelProps): JSX.Element {
 
   const ROTATION_INCREMENT: number = 360 / NAV_OPTIONS.length;
 
+  const navWheelSpring = useSpring({
+    from: {
+      opacity: 0
+    },
+    to: {
+      opacity: 1
+    },
+    config: {
+      duration: 1000
+    }
+  });
+
+  const [navButtonSpring, navButtonSpringApi] = useSpring(() => ({
+    
+  }));
+
   const location = useLocation();
 
   const [currentSelection, setCurrentSelection] = React.useState(getCurrentPage());
@@ -56,10 +73,10 @@ function NavWheel(props: INavWheelProps): JSX.Element {
   }
 
   return (
-    <div className='nav-wheel'>
+    <animated.div className='nav-wheel' style={navWheelSpring}>
       <NavRing selection={NAV_OPTIONS.findIndex(o => o.title === currentSelection.title)} navIcons={<NavIcons options={NAV_OPTIONS} />} options={NAV_OPTIONS} select={(selection: INavOption) => {setCurrentSelection(selection)}} />
-      <NavGoButton navigate={handleNavigate} selection={currentSelection}/>
-    </div>
+        <NavGoButton navigate={handleNavigate} selection={currentSelection}/>
+    </animated.div>
   );
 }
 

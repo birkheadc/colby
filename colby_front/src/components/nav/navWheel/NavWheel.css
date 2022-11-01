@@ -6,6 +6,8 @@ div.nav-wheel {
   display: grid;
   grid-template: 1fr / 1fr;
   place-items: center;
+
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 div.nav-wheel>* {

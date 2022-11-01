@@ -1,0 +1,14 @@
+div#background {
+  position: fixed;
+  inset: 0;
+  background-color: var(--clr-bg-a);
+  background-image: url('./assets/images/background/bg_01.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+html {
+  color: var(--clr-text-a);
+  background-color: var(--clr-bg-a);
+}

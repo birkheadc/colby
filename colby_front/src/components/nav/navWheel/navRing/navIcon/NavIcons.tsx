@@ -34,8 +34,8 @@ function NavIcons(props: INavIconsProps): JSX.Element {
     <>
       {data.map(
         icon => 
-        <div className='nav-icon' key={icon.icon.key} style={{transform: icon.transform}}>
-          {icon.icon}
+        <div className='nav-icon-wrapper' key={icon.icon.key} style={{transform: icon.transform}}>
+          <span>{icon.icon}</span>
         </div>
       )}
     </>
