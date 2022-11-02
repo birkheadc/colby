@@ -1,7 +1,5 @@
 # TODO
 
-  - Add twinkling stars to background
-
   - Add intro animation for main pages, thinking of a quick typewriter effect maybe?
 
   - Build welcome game:
