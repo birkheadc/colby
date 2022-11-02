@@ -1,8 +1,0 @@
-:root {
-  --font-primary: 'Josefin Sans', sans-serif;
-  --font-b: 'Josefin Sans', sans-serif;
-}
-
-html {
-  font-family: var(--font-primary);
-}

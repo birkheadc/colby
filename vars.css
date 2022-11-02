@@ -1,0 +1,10 @@
+:root {
+  --clr-bg-a: #000000;
+  --clr-text-a: #fffffa;
+
+  --clr-accent-a: #5800ff;
+  --clr-accent-b: #fa198b;
+  --clr-accent-c: #f0f600;
+
+  --border-nav-a: 3px solid var(--clr-text-a);
+}

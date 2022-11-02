@@ -56,3 +56,7 @@ if (container != null) {
   ```
 
  - Run `npm run start` and the dev server should come up!
+
+# Asset Credits
+
+- Background Photo by Aleksandar Pasaric: https://www.pexels.com/photo/dark-starry-sky-1694000/
