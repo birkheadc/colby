@@ -1,6 +1,6 @@
 div.nav-icon-wrapper {
   position: absolute;
   height: 100%;
-  font-size: 2rem;
-  padding-top: 2rem;
+  width: 3rem;
+  padding-top: 1.5rem;
 }

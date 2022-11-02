@@ -1,4 +1,3 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { animated, useSpring } from 'react-spring';
@@ -7,6 +6,7 @@ import { INavOption } from './navOption/INavOption';
 import NavIcons from './navRing/navIcon/NavIcons';
 import NavRing from './navRing/NavRing';
 import './NavWheel.css'
+import { HomeIcon, UserIcon, CommandLineIcon, IdentificationIcon, NewspaperIcon, EnvelopeIcon, RectangleStackIcon } from '@heroicons/react/24/outline'
 
 interface INavWheelProps {
   navigate(to: string): void
@@ -16,43 +16,43 @@ function NavWheel(props: INavWheelProps): JSX.Element {
 
   const NAV_OPTIONS: INavOption[] = [
     {
-      icon: <FontAwesomeIcon key='0' icon='home'/>,
+      icon: <HomeIcon key='0'/>,
       title: 'Home',
       description: 'Replay the welcome page',
       to: '/'
     },
     {
-      icon: <FontAwesomeIcon key='1' icon='address-card'/>,
+      icon: <UserIcon key='1'/>,
       title: 'About',
       description: 'Read all about me, Colby',
       to: '/about'
     },
     {
-      icon: <FontAwesomeIcon key='2' icon='diagram-project'/>,
+      icon: <CommandLineIcon key='2'/>,
       title: 'Projects',
       description: 'Information on projects I have made',
       to: '/projects'
     },
     {
-      icon: <FontAwesomeIcon key='3' icon='file'/>,
+      icon: <IdentificationIcon key='3'/>,
       title: 'Resume',
       description: "View Colby's Resume",
       to: '/resume'
     },
     {
-      icon: <FontAwesomeIcon key='4' icon='blog'/>,
+      icon: <NewspaperIcon key='4'/>,
       title: 'Blog',
       description: "Overview of my recent blog articles",
       to: '/blog'
     },
     {
-      icon: <FontAwesomeIcon key='5' icon='envelope'/>,
+      icon: <EnvelopeIcon key='5'/>,
       title: 'Contact',
       description: "Contact Me",
       to: '/contact'
     },
     {
-      icon: <FontAwesomeIcon key='6' icon='box-open'/>,
+      icon: <RectangleStackIcon key='6'/>,
       title: 'Sandbox',
       description: "A page where my stray widgets gather and play",
       to: '/sandbox'

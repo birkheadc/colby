@@ -3,8 +3,8 @@ import './NavWrapper.css'
 import { animated, useSpring } from 'react-spring';
 import { useNavigate } from 'react-router-dom';
 import NavWheel from './navWheel/NavWheel';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useScrollDirection from '../../hooks/useScrollDirection';
+import { Bars3Icon } from '@heroicons/react/24/outline'
 
 interface INavWrapperProps {
 
@@ -49,7 +49,6 @@ function NavWrapper(props: INavWrapperProps) {
   const [navOpenButtonSpring, navOpenButtonSpringApi] = useSpring(() => ({
     from: {
       color: 'var(--clr-accent-c)',
-      transform: 'scale(1)'
     }
   }));
 
@@ -83,11 +82,9 @@ function NavWrapper(props: INavWrapperProps) {
     navOpenButtonSpringApi.start({
       from: {
         color: 'var(--clr-accent-c)',
-        transform: 'scale(1)'
       },
       to: {
         color: 'var(--clr-accent-b)',
-        transform: 'scale(1.5)'
       }
     });
   }
@@ -96,11 +93,9 @@ function NavWrapper(props: INavWrapperProps) {
     navOpenButtonSpringApi.start({
       from: {
         color: 'var(--clr-accent-b)',
-        transform: 'scale(1.5)'
       },
       to: {
         color: 'var(--clr-accent-c)',
-        transform: 'scale(1)'
       }
     });
   }
@@ -177,7 +172,7 @@ function NavWrapper(props: INavWrapperProps) {
       );
     }
     return (
-      <animated.button className='nav-open-button' onClick={() => setOpen(true)} onPointerEnter={animateHoverOpenButton} onPointerLeave={animateLeaveOpenButton} style={{...navHideSpring, ...navOpenButtonSpring}}><FontAwesomeIcon icon='diamond' /></animated.button>
+      <animated.button className='nav-open-button' onClick={() => setOpen(true)} onPointerEnter={animateHoverOpenButton} onPointerLeave={animateLeaveOpenButton} style={{...navHideSpring, ...navOpenButtonSpring}}><Bars3Icon /></animated.button>
     );
   }
 

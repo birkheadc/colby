@@ -4,11 +4,6 @@ div.welcome-page-wrapper {
   height: 100%;
 }
 
-div.welcome-game-wrapper {
-  width: 100%;
-  height: 100%;
-}
-
 .welcome-page-skip-link {
   position: absolute;
   bottom: 0%;
@@ -20,6 +15,6 @@ div.welcome-game-wrapper {
 
 @media (max-width: 80rem) {
   .welcome-page-skip-link {
-    font-size: rem;
+    font-size: 2rem;
   }
 }
