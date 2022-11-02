@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import './App.css'
+import Background from './components/background/Background';
 import MainWindow from './components/mainWindow/MainWindow';
 
 interface IAppProps {
@@ -30,7 +31,7 @@ function App(props: IAppProps): JSX.Element  {
 
   return (
     <BrowserRouter>
-    <div id='background'></div>
+      <Background />
       <MainWindow />
     </BrowserRouter>
   );
