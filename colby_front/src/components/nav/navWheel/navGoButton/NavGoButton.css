@@ -18,11 +18,12 @@ button.nav-go-button {
   /* color: var(--clr-accent-c); */
   width: 50%;
   height: 25%;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   text-align: center;
   cursor: pointer;
   z-index: 3;
   font-size: 2rem;
+  font-family: var(--font-b);
 }
 
 div.nav-go-button-wrapper>p {

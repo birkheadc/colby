@@ -49,7 +49,7 @@ function NavWrapper(props: INavWrapperProps) {
   const [navOpenButtonSpring, navOpenButtonSpringApi] = useSpring(() => ({
     from: {
       color: 'var(--clr-accent-c)',
-      fontSize: '1.5rem'
+      transform: 'scale(1)'
     }
   }));
 
@@ -83,11 +83,11 @@ function NavWrapper(props: INavWrapperProps) {
     navOpenButtonSpringApi.start({
       from: {
         color: 'var(--clr-accent-c)',
-        fontSize: '1.5rem'
+        transform: 'scale(1)'
       },
       to: {
         color: 'var(--clr-accent-b)',
-        fontSize: '2rem'
+        transform: 'scale(1.5)'
       }
     });
   }
@@ -96,11 +96,11 @@ function NavWrapper(props: INavWrapperProps) {
     navOpenButtonSpringApi.start({
       from: {
         color: 'var(--clr-accent-b)',
-        fontSize: '2rem'
+        transform: 'scale(1.5)'
       },
       to: {
         color: 'var(--clr-accent-c)',
-        fontSize: '1.5rem'
+        transform: 'scale(1)'
       }
     });
   }

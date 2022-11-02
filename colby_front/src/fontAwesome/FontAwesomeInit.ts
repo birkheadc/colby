@@ -14,7 +14,7 @@ import {
   faDiamond,
   faBlog,
   faEnvelope,
-  faBoxOpen
+  faBoxOpen,
   // ADD ICON NAME HERE
 
 } from '@fortawesome/free-solid-svg-icons';
