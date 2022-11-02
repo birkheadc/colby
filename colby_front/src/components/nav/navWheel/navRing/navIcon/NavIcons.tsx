@@ -4,12 +4,14 @@ import { INavOption } from '../../navOption/INavOption';
 import './NavIcons.css'
 
 interface INavIconsProps {
-  options: INavOption[]
+  options: INavOption[],
+  selection: INavOption
 }
 
 interface IIconRenderData {
   icon: JSX.Element,
-  transform: string
+  transform: string,
+  color: string
 }
 
 function NavIcons(props: INavIconsProps): JSX.Element {
@@ -22,7 +24,8 @@ function NavIcons(props: INavIconsProps): JSX.Element {
       const rotation: number = ROTATION_INCREMENT * i;
       data.push({
         icon: props.options[i].icon,
-        transform: 'rotate(' + rotation + 'deg)'
+        transform: 'rotate(' + rotation + 'deg)',
+        color: props.options[i].title === props.selection.title ? 'var(--clr-accent-c)' : 'var(--clr-text-a)'
       });
     }
     return data;
@@ -34,7 +37,7 @@ function NavIcons(props: INavIconsProps): JSX.Element {
     <>
       {data.map(
         icon => 
-        <div className='nav-icon-wrapper' key={icon.icon.key} style={{transform: icon.transform}}>
+        <div className='nav-icon-wrapper' key={icon.icon.key} style={{transform: icon.transform, color: icon.color}}>
           <span>{icon.icon}</span>
         </div>
       )}

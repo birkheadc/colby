@@ -4,6 +4,7 @@ import { animated, useSpring } from 'react-spring';
 import { useNavigate } from 'react-router-dom';
 import NavWheel from './navWheel/NavWheel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import useScrollDirection from '../../hooks/useScrollDirection';
 
 interface INavWrapperProps {
 
@@ -13,7 +14,9 @@ function NavWrapper(props: INavWrapperProps) {
 
   const navigate = useNavigate();
   const [isOpen, setOpen] = React.useState(false);
-
+  const scrollDirection = useScrollDirection();
+  const [isHidden, setHidden] = React.useState(false);
+  let lastScroll = 0;
   const navAnimationStates = {
     closed: {
       backdropFilter: 'blur(0px)'
@@ -43,6 +46,17 @@ function NavWrapper(props: INavWrapperProps) {
     }
   };
 
+  const [navOpenButtonSpring, navOpenButtonSpringApi] = useSpring(() => ({
+    from: {
+      color: 'var(--clr-accent-c)',
+      fontSize: '1.5rem'
+    }
+  }));
+
+  const [navHideSpring, navHideSpringApi] = useSpring(() => ({
+
+  }));
+
   const [navWrapperSpring, navWrapperSpringApi] = useSpring(() => ({
     from: navWrapperAnimationStates.closed
   }));
@@ -65,12 +79,81 @@ function NavWrapper(props: INavWrapperProps) {
     });
   };
 
+  const animateHoverOpenButton = (): void => {
+    navOpenButtonSpringApi.start({
+      from: {
+        color: 'var(--clr-accent-c)',
+        fontSize: '1.5rem'
+      },
+      to: {
+        color: 'var(--clr-accent-b)',
+        fontSize: '2rem'
+      }
+    });
+  }
+
+  const animateLeaveOpenButton = (): void => {
+    navOpenButtonSpringApi.start({
+      from: {
+        color: 'var(--clr-accent-b)',
+        fontSize: '2rem'
+      },
+      to: {
+        color: 'var(--clr-accent-c)',
+        fontSize: '1.5rem'
+      }
+    });
+  }
+
+  function animateHideNav(): void {
+    navHideSpringApi.start({
+      from: {
+        transform: 'translate(0vh, 0vh)'
+      },
+      to: {
+        transform: 'translate(0vh, -20vh)'
+      },
+      config: {
+        mass: 5,
+        tension: 100,
+        clamp: true
+      }
+    });
+  }
+
+  function animateShowNav(): void {
+    navHideSpringApi.start({
+      from: {
+        transform: 'translate(0vh, -20vh)'
+      },
+      to: {
+        transform: 'translate(0vh, 0vh)'
+      },
+      config: {
+        tension: 500,
+        clamp: true
+      }
+    });
+  }
+
   React.useEffect(() => {
-    isOpen ? animateOpenNav() : animateCloseNav();
+    scrollDirection === "down" ? animateHideNav() : animateShowNav();
+  }, [scrollDirection])
+
+  React.useEffect(() => {
+    if (isOpen) {
+      animateOpenNav();
+    }
+    else {
+      animateCloseNav();
+      animateLeaveOpenButton();
+    }
   }, [isOpen]);
 
   React.useEffect(() => {
-    window.addEventListener('scroll', () => {setOpen(false)});
+    window.addEventListener('scroll', () => {
+      setOpen(false);
+    });
     window.addEventListener('mousedown', () => {
       const elements = document.querySelectorAll(":hover");
       for (let i = 0; i < elements.length; i++) {
@@ -94,7 +177,7 @@ function NavWrapper(props: INavWrapperProps) {
       );
     }
     return (
-      <button className='nav-open-button' onClick={() => setOpen(true)}><FontAwesomeIcon icon='diamond' /></button>
+      <animated.button className='nav-open-button' onClick={() => setOpen(true)} onPointerEnter={animateHoverOpenButton} onPointerLeave={animateLeaveOpenButton} style={{...navHideSpring, ...navOpenButtonSpring}}><FontAwesomeIcon icon='diamond' /></animated.button>
     );
   }
 

@@ -109,7 +109,7 @@ function NavRing(props: INavRingProps): JSX.Element {
     window.addEventListener('pointermove', handleRotate);
     window.addEventListener('pointerup', handleRotateStop);
 
-    document.body.style.setProperty('overscroll-behavior', 'contain');
+    document.body.style.setProperty('overscroll-behavior', 'none');
   }
 
   const handleRotate = (e: PointerEvent): void => {
@@ -130,7 +130,7 @@ function NavRing(props: INavRingProps): JSX.Element {
   }
 
   return (
-    <animated.div className='nav-ring' onPointerDown={handleRotateStart} style={{ color: isRotating ? 'var(--clr-accent-b)' : 'var(--clr-accent-c)', ...ringSpring}}>
+    <animated.div className='nav-ring' onPointerDown={handleRotateStart} style={ringSpring}>
       {props.navIcons}
     </animated.div>
   );

@@ -4,25 +4,23 @@ nav {
   height: 100%;
   backdrop-filter: blur(2px);
   user-select: none;
+  z-index: 1;
 }
 
 div.nav-wrapper {
   border-radius: 50%;
   position: absolute;
   touch-action: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 button.nav-open-button {
   background-color: var(--clr-bg-a);
   color: var(--clr-accent-c);
   border-radius: 50%;
-  width: 100%;
-  height: 100%;
   text-align: center;
   cursor: pointer;
   font-size: 1.5rem;
-}
-
-button.nav-open-button:hover, button.nav-open-button:active {
-  color: var(--clr-accent-b);
 }

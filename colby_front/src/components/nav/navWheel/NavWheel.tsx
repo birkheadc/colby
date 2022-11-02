@@ -39,6 +39,24 @@ function NavWheel(props: INavWheelProps): JSX.Element {
       description: "View Colby's Resume",
       to: '/resume'
     },
+    {
+      icon: <FontAwesomeIcon key='4' icon='blog'/>,
+      title: 'Blog',
+      description: "Overview of my recent blog articles",
+      to: '/blog'
+    },
+    {
+      icon: <FontAwesomeIcon key='5' icon='envelope'/>,
+      title: 'Contact',
+      description: "Contact Me",
+      to: '/contact'
+    },
+    {
+      icon: <FontAwesomeIcon key='6' icon='box-open'/>,
+      title: 'Sandbox',
+      description: "A page where my stray widgets gather and play",
+      to: '/sandbox'
+    },
   ];
 
   const ROTATION_INCREMENT: number = 360 / NAV_OPTIONS.length;
@@ -74,7 +92,7 @@ function NavWheel(props: INavWheelProps): JSX.Element {
 
   return (
     <animated.div className='nav-wheel' style={navWheelSpring}>
-      <NavRing selection={NAV_OPTIONS.findIndex(o => o.title === currentSelection.title)} navIcons={<NavIcons options={NAV_OPTIONS} />} options={NAV_OPTIONS} select={(selection: INavOption) => {setCurrentSelection(selection)}} />
+      <NavRing selection={NAV_OPTIONS.findIndex(o => o.title === currentSelection.title)} navIcons={<NavIcons options={NAV_OPTIONS} selection={currentSelection}/>} options={NAV_OPTIONS} select={(selection: INavOption) => {setCurrentSelection(selection)}} />
         <NavGoButton navigate={handleNavigate} selection={currentSelection}/>
     </animated.div>
   );

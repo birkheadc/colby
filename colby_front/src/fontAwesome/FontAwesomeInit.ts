@@ -12,12 +12,15 @@ import {
   faBars,
   faFile,
   faDiamond,
+  faBlog,
+  faEnvelope,
+  faBoxOpen
   // ADD ICON NAME HERE
 
 } from '@fortawesome/free-solid-svg-icons';
 
 function FontAwesomeInit():void {
-  library.add(faHouse, faAddressCard, faDiagramProject, faBars, faFile, faDiamond, /*ADD ICON NAME HERE*/ );
+  library.add(faHouse, faAddressCard, faDiagramProject, faBars, faFile, faDiamond, faBlog, faEnvelope, faBoxOpen /*ADD ICON NAME HERE*/ );
 }
 
 export default FontAwesomeInit;
