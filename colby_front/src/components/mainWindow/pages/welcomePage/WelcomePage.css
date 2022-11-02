@@ -1,0 +1,18 @@
+div.welcome-page-wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+div.welcome-game-wrapper {
+  background-color: blue;
+}
+
+.welcome-page-skip-link {
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
+  right: 0%;
+  text-align: center;
+  padding-bottom: 0.5em;
+}
