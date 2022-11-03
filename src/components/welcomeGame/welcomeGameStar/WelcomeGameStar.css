@@ -2,6 +2,9 @@ div.welcome-game-star-wrapper {
   width: fit-content;
   display: inline-block;
   transform: scale(var(--nav-scale));
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
 }
 
 div.welcome-game-star {
@@ -11,10 +14,9 @@ div.welcome-game-star {
   align-items: center;
 
   user-select: none;
-  
-  padding: 0.5em;
 
   font-size: 2rem;
+  pointer-events: all;
 }
 
 div.welcome-game-star:hover {

@@ -14,10 +14,9 @@ div.welcome-game-goals-wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  gap: 1em;
+  justify-content: space-around;
 
-  z-index: -1;
+  z-index: 1;
 
   border-style: ridge;
   border-width: 3px;
