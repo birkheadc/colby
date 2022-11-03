@@ -3,16 +3,13 @@ import { IWord } from '../welcomeGameLevelManager/WelcomeGameLevelManager';
 import './WelcomeGameGoal.css'
 
 interface IWelcomeGameGoalProps {
-  words: IWord[]
+  word: IWord
 }
 
 function WelcomeGameGoal(props: IWelcomeGameGoalProps): JSX.Element {
   return (
-    <div className='welcome-game-goal'>
-      {props.words.map(
-        word =>
-        <span id={'welcome-game-goal_' + word.index} key={word.index}>{word.word}</span>
-      )}
+    <div className='welcome-game-goal' id={'welcome-game-goal_' + props.word.index}>
+      {props.word.word}
     </div>
   );
 }

@@ -7,7 +7,7 @@ div.nav-wheel {
   grid-template: 1fr / 1fr;
   place-items: center;
 
-  background-color: rgba(0, 0, 0, 0.8);
+  background: radial-gradient(var(--clr-bg-a), rgba(0, 0, 0, 0.5));
 }
 
 div.nav-wheel>* {

@@ -1,0 +1,24 @@
+div.welcome-game-goals-wrapper {
+  background: radial-gradient(var(--clr-bg-a), rgba(0, 0, 0, 0.5));
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  border-radius: 50%;
+  width: 500px;
+  height: 500px;
+
+  transform: translate(-50%, -50%) scale(var(--nav-scale));
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+
+  z-index: -1;
+
+  border-style: ridge;
+  border-width: 3px;
+}

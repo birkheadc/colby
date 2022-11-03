@@ -9,7 +9,7 @@ interface IWelcomeGameLevelManagerProps {
 
 export interface IWord {
   index: number,
-  word: string
+  word: string,
 }
 
 function WelcomeGameLevelManager(props: IWelcomeGameLevelManagerProps): JSX.Element {
@@ -32,9 +32,14 @@ function WelcomeGameLevelManager(props: IWelcomeGameLevelManagerProps): JSX.Elem
     <>
       {words.map(
         word =>
-        <WelcomeGameStar index={word.index} word={word.word} />
+        <WelcomeGameStar key={'welcome-game-star_' + word.index} word={word} />
       )}
-      <WelcomeGameGoal words={words}/>
+      <div className='welcome-game-goals-wrapper'>
+      {words.map(
+        word =>
+        <WelcomeGameGoal key={'welcome-game-goal_' + word.index} word={word} />
+      )}
+      </div>
     </>
   );
 }
