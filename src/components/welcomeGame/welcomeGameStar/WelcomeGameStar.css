@@ -1,7 +1,6 @@
 div.welcome-game-star-wrapper {
   width: fit-content;
   display: inline-block;
-  transform: scale(var(--nav-scale));
   position: absolute;
   z-index: 2;
   pointer-events: none;

@@ -2,27 +2,50 @@ import * as React from 'react';
 import './WelcomeGameStar.css';
 import Draggable, { DraggableData, DraggableEvent } from 'react-draggable';
 import { IWord } from '../welcomeGameLevelManager/WelcomeGameLevelManager';
+import Helpers from '../../../helpers';
+import { ISimpleRect } from '../../../helpers/calculateNonOverlappingQuadrants';
 
 interface IWelcomeGameStarProps {
+  complete: boolean,
   word: IWord,
   reportGoal(index: number): void
 }
 
 function WelcomeGameStar(props: IWelcomeGameStarProps): JSX.Element {
 
-  const initialPosition: {x: number, y: number} = getInitialPosition();
-
-  function getInitialPosition(): {x: number, y: number} {
-    // TODO: make this randomly select a good initial position
-    return {
-      x: 0,
-      y: 0
-    }
-  }
-
   const [dragging, setDragging] = React.useState(false);
-  const [position, setPosition] = React.useState(initialPosition);
-  const [active, setActive] = React.useState(true);
+  const [initialPosition, setInitialPosition] = React.useState<{ x: number, y: number }>(getNewInitialPosition());
+  const [position, setPosition] = React.useState({x: 0, y: 0});
+  
+
+  function getNewInitialPosition(): {x: number, y: number} {
+
+    const spawnBox: DOMRect | undefined = document.querySelector('#welcome-game-spawner')?.getBoundingClientRect();
+    const noSpawnBox: DOMRect | undefined = document.querySelector('#welcome-game-goals-wrapper')?.getBoundingClientRect();
+
+    if (!spawnBox || !noSpawnBox) {
+      return {
+        x: 0,
+        y: 0
+      }
+    }
+
+    const quadrants: ISimpleRect[] = Helpers.calculateNonOverlappingQuadrants(spawnBox, noSpawnBox);
+    if (quadrants.length < 1) {
+      return {
+        x: 0,
+        y: 0
+      }
+    }
+    const box: ISimpleRect = quadrants[Math.floor(Math.random() * quadrants.length)];
+
+    const location = {
+      x: Helpers.generateRandomNumberBetween(box.left, box.right),
+      y: Helpers.generateRandomNumberBetween(box.top, box.bottom)
+    };
+
+    return location;
+  }
 
   const styles = {
     dragging: {
@@ -37,8 +60,17 @@ function WelcomeGameStar(props: IWelcomeGameStarProps): JSX.Element {
   }
 
   React.useEffect(() => {
-    window.addEventListener('resize', () => setPosition(initialPosition));
+    setInitialPosition(getNewInitialPosition());
+    window.addEventListener('resize', () => setPosition({x: 0, y: 0}));
   }, []);
+
+  React.useEffect(() => {
+    setPosition({x: 0, y: 0});
+  }, [initialPosition]);
+
+  React.useEffect(() => {
+    setInitialPosition(getNewInitialPosition())
+  }, [props.complete]);
 
   function isMouseOverGoal(): boolean {
     const star = document.querySelector('#welcome-game-star_' + props.word.index);
@@ -65,15 +97,14 @@ function WelcomeGameStar(props: IWelcomeGameStarProps): JSX.Element {
   const dragStopHandler = (e: DraggableEvent, data: DraggableData): void => {
     setDragging(false);
     if (isMouseOverGoal() === true) {
-      setActive(false);
       props.reportGoal(props.word.index);
     }
   }
 
   return (
-    <div className='welcome-game-star-wrapper'>
-      <Draggable disabled={!active} position={position} onStart={() => setDragging(true)} onDrag={dragHandler} onStop={dragStopHandler} scale={parseFloat(document.documentElement.style.getPropertyValue('--nav-scale'))}>
-        <div className='welcome-game-star' id={'welcome-game-star_' + props.word.index} style={active ? (dragging ? styles.dragging : styles.notDragging) : styles.disabled}>
+    <div className='welcome-game-star-wrapper' style={{transform: 'translate(' + initialPosition.x + 'px, ' + initialPosition.y + 'px) scale(var(--nav-scale))'}}>
+      <Draggable disabled={props.complete} position={position} onStart={() => setDragging(true)} onDrag={dragHandler} onStop={dragStopHandler} scale={parseFloat(document.documentElement.style.getPropertyValue('--nav-scale'))}>
+        <div className='welcome-game-star' id={'welcome-game-star_' + props.word.index} style={props.complete ? styles.disabled : (dragging ? styles.dragging : styles.notDragging) }>
           {props.word.word}
         </div>
       </Draggable>

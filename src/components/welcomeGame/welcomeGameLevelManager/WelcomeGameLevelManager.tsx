@@ -17,6 +17,7 @@ function WelcomeGameLevelManager(props: IWelcomeGameLevelManagerProps): JSX.Elem
 
   const words = breakIntoWords(props.phrase);
   const [score, setScore] = React.useState(0);
+  const [completedGoals, setCompletedGoals] = React.useState<boolean[]>([]);
 
   function breakIntoWords(phrase: string ): IWord[] {
     const iWords: IWord[] = [];
@@ -30,14 +31,11 @@ function WelcomeGameLevelManager(props: IWelcomeGameLevelManagerProps): JSX.Elem
     return iWords;
   }
 
-  function highlightGoal(index: number): void {
-    const goal = document.querySelector("#welcome-game-goal_" + index);
-    goal?.classList.add('goal-complete');
-  }
-
   const handleGoal = (index: number): void => {
     setScore(s => s  + 1);
-    highlightGoal(index);
+    const array = [...completedGoals];
+    array[index] = true;
+    setCompletedGoals(array);
   }
 
   React.useEffect(() => {
@@ -46,16 +44,28 @@ function WelcomeGameLevelManager(props: IWelcomeGameLevelManagerProps): JSX.Elem
     }
   }, [score]);
 
+  React.useEffect(() => {
+    function initializeRound(): void {
+      setScore(0);
+      const array = [];
+      for (let i = 0; i < words.length; i++) {
+        array.push(false);
+      }
+      setCompletedGoals(array);
+    }
+    initializeRound();
+  }, [props.phrase])
+
   return (
     <>
       {words.map(
         word =>
-        <WelcomeGameStar key={'welcome-game-star_' + word.index} reportGoal={handleGoal} word={word} />
+        <WelcomeGameStar complete={completedGoals[word.index]} key={'welcome-game-star_' + word.index} reportGoal={handleGoal} word={word} />
       )}
-      <div className='welcome-game-goals-wrapper'>
+      <div className='welcome-game-goals-wrapper' id='welcome-game-goals-wrapper'>
       {words.map(
         word =>
-        <WelcomeGameGoal key={'welcome-game-goal_' + word.index} word={word} />
+        <WelcomeGameGoal complete={completedGoals[word.index]} key={'welcome-game-goal_' + word.index} word={word} />
       )}
       </div>
     </>

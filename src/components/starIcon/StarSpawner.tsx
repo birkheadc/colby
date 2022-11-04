@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Helpers from '../../helpers';
 import StarIcon, { IStarData } from './StarIcon';
 import './StarSpawner.css';
 
@@ -20,24 +21,20 @@ function StarSpawner(props: IStarSpawnerProps): JSX.Element {
 
   const [starData, setStarData] = React.useState<IStarData>(generateRandomStarData());
   const [opacity, setOpacity] = React.useState(0);
-  const [opacityIncrement, setOpacityIncrement] = React.useState(generateRandomNumberBetween(OPACITY_INCREMENT_MIN, OPACITY_INCREMENT_MAX));
+  const [opacityIncrement, setOpacityIncrement] = React.useState(Helpers.generateRandomNumberBetween(OPACITY_INCREMENT_MIN, OPACITY_INCREMENT_MAX));
   const [fadeIn, setFadeIn] = React.useState(true);
   const [timer, setTimer] = React.useState(0);
 
   function generateRandomStarData(): IStarData {
     return {
-      color: 'rgb(' + generateRandomNumberBetween(COLOR_MIN, COLOR_MAX) + ', ' + generateRandomNumberBetween(COLOR_MIN, COLOR_MAX) + ', ' + generateRandomNumberBetween(COLOR_MIN, COLOR_MAX) + ')',
-      scale: generateRandomNumberBetween(SCALE_MIN, SCALE_MAX),
+      color: 'rgb(' + Helpers.generateRandomNumberBetween(COLOR_MIN, COLOR_MAX) + ', ' + Helpers.generateRandomNumberBetween(COLOR_MIN, COLOR_MAX) + ', ' + Helpers.generateRandomNumberBetween(COLOR_MIN, COLOR_MAX) + ')',
+      scale: Helpers.generateRandomNumberBetween(SCALE_MIN, SCALE_MAX),
       rotate: 0,
       location: {
-        x: generateRandomNumberBetween(LOCATION_MIN, LOCATION_MAX),
-        y: generateRandomNumberBetween(LOCATION_MIN, LOCATION_MAX)
+        x: Helpers.generateRandomNumberBetween(LOCATION_MIN, LOCATION_MAX),
+        y: Helpers.generateRandomNumberBetween(LOCATION_MIN, LOCATION_MAX)
       }
     };
-  }
-
-  function generateRandomNumberBetween(min: number, max: number): number {
-    return Math.random() * (max - min) + min
   }
 
   React.useEffect(() => {
@@ -63,9 +60,9 @@ function StarSpawner(props: IStarSpawnerProps): JSX.Element {
       setOpacity(1 - (timer * opacityIncrement));
       if (opacity <= 0) {
         setFadeIn(true);
-        setTimer(generateRandomNumberBetween(-15, 0));
+        setTimer(Helpers.generateRandomNumberBetween(-15, 0));
         setStarData(generateRandomStarData());
-        setOpacityIncrement(generateRandomNumberBetween(OPACITY_INCREMENT_MIN, OPACITY_INCREMENT_MAX));
+        setOpacityIncrement(Helpers.generateRandomNumberBetween(OPACITY_INCREMENT_MIN, OPACITY_INCREMENT_MAX));
       }
     }
   }, [timer, opacity, fadeIn])
