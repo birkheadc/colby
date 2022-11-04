@@ -2,6 +2,7 @@ import * as React from 'react';
 import Helpers from '../../helpers';
 import StarIcon, { IStarData } from './StarIcon';
 import './StarSpawner.css';
+import { animated, useSpring} from 'react-spring';
 
 interface IStarSpawnerProps {
 
@@ -15,15 +16,10 @@ function StarSpawner(props: IStarSpawnerProps): JSX.Element {
   const SCALE_MAX: number = 0.4;
   const LOCATION_MIN: number = 10;
   const LOCATION_MAX: number = 90;
-
-  const OPACITY_INCREMENT_MIN: number = 0.01;
-  const OPACITY_INCREMENT_MAX: number = 0.05;
+  const FADE_MIN: number = 1000;
+  const FADE_MAX: number = 3000;
 
   const [starData, setStarData] = React.useState<IStarData>(generateRandomStarData());
-  const [opacity, setOpacity] = React.useState(0);
-  const [opacityIncrement, setOpacityIncrement] = React.useState(Helpers.generateRandomNumberBetween(OPACITY_INCREMENT_MIN, OPACITY_INCREMENT_MAX));
-  const [fadeIn, setFadeIn] = React.useState(true);
-  const [timer, setTimer] = React.useState(0);
 
   function generateRandomStarData(): IStarData {
     return {
@@ -37,38 +33,37 @@ function StarSpawner(props: IStarSpawnerProps): JSX.Element {
     };
   }
 
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      setTimer(timer => timer + 1);
-    }, 50);
+  const [spring, springApi] = useSpring(() => ({
+    from: { opacity: 0 }
+  }));
 
-    return () => clearInterval(interval);
+  const fadeIn = (): void => {
+    setStarData(generateRandomStarData());
+    springApi.start({
+      from: { opacity: 0 },
+      to: { opacity: 1 },
+      config: { duration: Helpers.generateRandomNumberBetween(FADE_MIN, FADE_MAX)},
+      onRest: fadeOut
+    });
+  }
+
+  const fadeOut = (): void => {
+    springApi.start({
+      from: { opacity: 1 },
+      to: { opacity: 0 },
+      config: { duration: Helpers.generateRandomNumberBetween(FADE_MIN, FADE_MAX)},
+      onRest: fadeIn
+    });
+  }
+
+  React.useEffect(() => {
+    fadeIn();
   }, []);
 
-  React.useEffect(() => {
-    if (timer < 0) {
-      return;
-    }
-    if (fadeIn === true) {
-      setOpacity(timer * opacityIncrement);
-      if (opacity >= 1) {
-        setFadeIn(false);
-        setTimer(0);
-      }
-    }
-    else {
-      setOpacity(1 - (timer * opacityIncrement));
-      if (opacity <= 0) {
-        setFadeIn(true);
-        setTimer(Helpers.generateRandomNumberBetween(-15, 0));
-        setStarData(generateRandomStarData());
-        setOpacityIncrement(Helpers.generateRandomNumberBetween(OPACITY_INCREMENT_MIN, OPACITY_INCREMENT_MAX));
-      }
-    }
-  }, [timer, opacity, fadeIn])
-
   return (
-    <StarIcon data={starData} opacity={opacity}/>
+    <animated.div style={spring}>
+      <StarIcon data={starData}/>
+    </animated.div>
   );
 }
 

@@ -1,9 +1,11 @@
 import { generateRandomNumberBetween } from "./generateRandomNumberBetween";
-import { calculateNonOverlappingQuadrants } from "./calculateNonOverlappingQuadrants"
+import { calculateNonOverlappingQuadrants } from "./calculateNonOverlappingQuadrants";
+import { areRectsOverlapping } from "./areRectsOverlapping";
 
 const Helpers = {
   generateRandomNumberBetween,
-  calculateNonOverlappingQuadrants
+  calculateNonOverlappingQuadrants,
+  areRectsOverlapping
 }
 
 export default Helpers;

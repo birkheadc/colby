@@ -11,7 +11,7 @@ function WelcomePage(props: IWelcomePageProps) {
   return (
     <main>
       <div className='welcome-page-wrapper'>
-        <WelcomeGame phrases={['Welcome', "I'm Colby", 'This is my virtual space']} />
+        <WelcomeGame phrases={['Welcome', "I am Colby", 'This is my virtual space']} />
         <NavLink className='welcome-page-skip-link' to='/about'>Very flashy intro, but I'm in a hurry, please let me out.</NavLink>
       </div>
     </main>

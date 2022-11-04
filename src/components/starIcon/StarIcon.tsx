@@ -12,12 +12,11 @@ export interface IStarData {
 }
 
 interface IStarIconProps {
-  data: IStarData,
-  opacity: number
+  data: IStarData
 }
 function StarIcon(props: IStarIconProps): JSX.Element {
   return (
-    <div className='star-icon-wrapper' style={{transform: 'translate(-50%, -50%) scale(' + props.data.scale + ') rotate(' + props.data.rotate + 'deg)', left: props.data.location.x + '%', top: 100 - props.data.location.y + '%', opacity: props.opacity}}>
+    <div className='star-icon-wrapper' style={{transform: 'translate(-50%, -50%) scale(' + props.data.scale + ') rotate(' + props.data.rotate + 'deg)', left: props.data.location.x + '%', top: 100 - props.data.location.y + '%'}}>
       <svg width="80" height="80" xmlns="http://www.w3.org/2000/svg" xmlSpace="preserve" version="1.1">
         <defs>
           <filter height="200%" width="200%" y="-50%" x="-50%" id="svg_2_blur">

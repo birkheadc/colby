@@ -1,7 +1,15 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './WelcomeGame.css';
-import WelcomeGameLevelManager from './welcomeGameLevelManager/WelcomeGameLevelManager';
+import WelcomeGameGoalsManager from './welcomeGameGoalsManager/WelcomeGameGoalsManager';
+import WelcomeGameStar from './welcomeGameStar/WelcomeGameStar';
+import { animated, useSpring } from 'react-spring';
+
+export interface IWordData {
+  word: string,
+  index: number,
+  isComplete: boolean
+}
 
 interface IWelcomeGameProps {
   phrases: string[]
@@ -9,22 +17,90 @@ interface IWelcomeGameProps {
 function WelcomeGame(props: IWelcomeGameProps): JSX.Element {
 
   const navigate = useNavigate();
-  const [currentRound, setCurrentRound] = React.useState(0);
+  const [round, setRound] = React.useState(0);
+  const [score, setScore] = React.useState(0);
+  const [stars, setStars] = React.useState<IWordData[]>();
+  const [goals, setGoals] = React.useState<IWordData[][]>();
+
+  const [spring, springApi] = useSpring(() => ({
+    from: {
+      opacity: 1
+    }
+  }));
+
+  React.useEffect(() => {
+    let stars: IWordData[] = [];
+    let goalPhrases: IWordData[][] = [];
+    let index = 0;
+    for (let i = 0; i < props.phrases.length; i++) {
+      const words = props.phrases[i].split(' ');
+      let goalPhrase: IWordData[] = [];
+      for (let j = 0; j < words.length; j++) {
+        const iWord: IWordData = {
+          word: words[j],
+          index: index,
+          isComplete: false
+        };
+        stars.push(iWord);
+        goalPhrase.push(iWord);
+        index++;
+      }
+      goalPhrases.push(goalPhrase);
+    }
+    setStars(stars);
+    setGoals(goalPhrases);
+  }, []);
+
+  React.useEffect(() => {
+    if (goals == null) return;
+    if (score >= goals[round].length) {
+      handleRoundComplete();
+    }
+  }, [score]);
+
+  const handleReportGoal = (goalIndex: number): void => {
+    if (goals == null) return;
+    const newGoals: IWordData[][] = [...goals];
+    const thisRound: IWordData[] = newGoals[round];
+    let goal = thisRound.find(g => g.index === goalIndex);
+    if (goal == null) return;
+    goal.isComplete = true;
+    setGoals(newGoals);
+    setScore(s => s + 1);
+  }
 
   const handleRoundComplete = (): void => {
-    if (currentRound + 1 >= props.phrases.length) {
-      navigate('/about');
+    if (round + 1 >= props.phrases.length) {
+      springApi.start({
+        from: {
+          opacity: 1
+        },
+        to: {
+          opacity: 0
+        },
+        config: {
+          duration: 1000
+        },
+        onRest: () => navigate('/about')
+      });
     }
     else {
-      setCurrentRound(c => c + 1);
+      setScore(0);
+      setRound(c => c + 1);
     }
   }
 
   return (
-    <div className='welcome-game-wrapper' id='welcome-game-wrapper'>
+    <animated.div className='welcome-game-wrapper' id='welcome-game-wrapper' style={spring}>
       <div className='welcome-game-spawner' id='welcome-game-spawner'></div>
-      <WelcomeGameLevelManager reportRoundComplete={handleRoundComplete} phrase={props.phrases[currentRound]} />
-    </div>
+      {
+        stars?.map(
+          star =>
+          <WelcomeGameStar key={'welcome-game-star_' + star.index} word={star} reportGoal={handleReportGoal} />
+        )
+      }
+      { goals ? <WelcomeGameGoalsManager goals={goals} round={round} /> : null}
+    </animated.div>
   );
 }
 

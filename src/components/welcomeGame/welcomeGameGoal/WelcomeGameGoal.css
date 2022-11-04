@@ -1,9 +1,9 @@
 div.welcome-game-goal {
-  font-size: 2rem;
+  font-size: 1.8rem;
   user-select: none;
 }
 
 div.goal-complete {
   color: var(--clr-accent-c);
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
