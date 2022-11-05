@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { animated, useSpring } from 'react-spring';
-import { start } from 'repl';
 import { INavOption } from '../navOption/INavOption';
-import NavIcons from './navIcon/NavIcons';
 import './NavRing.css'
 
 interface INavRingProps {

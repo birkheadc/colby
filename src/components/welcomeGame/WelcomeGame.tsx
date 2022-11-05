@@ -21,11 +21,14 @@ function WelcomeGame(props: IWelcomeGameProps): JSX.Element {
   const [score, setScore] = React.useState(0);
   const [stars, setStars] = React.useState<IWordData[]>();
   const [goals, setGoals] = React.useState<IWordData[][]>();
+  const [needHint, setNeedHint] = React.useState<boolean>(true);
 
   const [spring, springApi] = useSpring(() => ({
-    from: {
-      opacity: 1
-    }
+    from: { opacity: 1 }
+  }));
+
+  const [hintSpring, hintSpringApi] = useSpring(() => ({
+    from: { opacity: 0 }
   }));
 
   React.useEffect(() => {
@@ -52,6 +55,17 @@ function WelcomeGame(props: IWelcomeGameProps): JSX.Element {
   }, []);
 
   React.useEffect(() => {
+    const timer = setTimeout(() => {
+      hintSpringApi.start({
+        from: { opacity: 0 },
+        to: { opacity: 1 },
+        config: { duration: 1000 }
+      });
+    }, 7500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  React.useEffect(() => {
     if (goals == null) return;
     if (score >= goals[round].length) {
       handleRoundComplete();
@@ -67,6 +81,7 @@ function WelcomeGame(props: IWelcomeGameProps): JSX.Element {
     goal.isComplete = true;
     setGoals(newGoals);
     setScore(s => s + 1);
+    setNeedHint(false);
   }
 
   const handleRoundComplete = (): void => {
@@ -100,6 +115,7 @@ function WelcomeGame(props: IWelcomeGameProps): JSX.Element {
         )
       }
       { goals ? <WelcomeGameGoalsManager goals={goals} round={round} /> : null}
+      <animated.p className='welcome-game-hint' style={needHint ? { ...hintSpring } : { ...hintSpring, display: 'none' }}>(Drag the stars to the center)</animated.p>
     </animated.div>
   );
 }

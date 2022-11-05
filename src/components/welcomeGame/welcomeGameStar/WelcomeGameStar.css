@@ -7,17 +7,21 @@ div.welcome-game-star-wrapper {
 }
 
 div.welcome-game-star {
-  width: fit-content;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template: 1fr / 1fr;
+  place-items: center;
 
   user-select: none;
 
   font-size: 2rem;
-  padding: 0.5em;
+  border-radius: 5px;
 
   pointer-events: all;
+}
+
+div.welcome-game-star > * {
+  grid-column: 1 / 1;
+  grid-row: 1 / 1;
 }
 
 div.welcome-game-star:hover {

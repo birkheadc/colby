@@ -17,6 +17,8 @@ div.welcome-page-wrapper {
   border-style: ridge;
 
   border-radius: 5px;
+
+  font-size: 1rem;
 }
 
 .welcome-page-skip-link:hover {
