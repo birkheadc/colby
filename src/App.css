@@ -1,4 +1,37 @@
 html {
   color: var(--clr-text-a);
   background-color: var(--clr-bg-a);
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+div#root {
+  height: 100%;
+}
+
+@keyframes linkHover {
+  from {
+    color: var(--clr-accent-c);
+  }
+  to {
+    color: var(--clr-accent-b);
+  }
+}
+
+a {
+  color: var(--clr-accent-c);
+}
+
+a:hover, a:active {
+  animation-name: linkHover;
+  animation-duration: 0.5s;
+}
+
+@media (max-width: 980px) {
+  html {
+    font-size: 200%;
+  }
 }

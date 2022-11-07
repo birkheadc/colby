@@ -4,6 +4,7 @@ nav {
   height: 100%;
   backdrop-filter: blur(2px);
   user-select: none;
+  pointer-events: none;
   z-index: 1;
 }
 
@@ -23,6 +24,7 @@ button.nav-open-button {
   text-align: center;
   cursor: pointer;
   width: 1.8rem;
+  pointer-events: all;
 }
 
 @media (max-width: 80rem) {

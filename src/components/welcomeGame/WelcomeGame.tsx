@@ -115,7 +115,7 @@ function WelcomeGame(props: IWelcomeGameProps): JSX.Element {
         )
       }
       { goals ? <WelcomeGameGoalsManager goals={goals} round={round} /> : null}
-      <animated.p className='welcome-game-hint' style={needHint ? { ...hintSpring } : { ...hintSpring, display: 'none' }}>(Drag the stars to the center)</animated.p>
+      <animated.p className='welcome-game-hint' style={needHint ? { ...hintSpring } : { ...hintSpring, display: 'none' }}>(Drag the matching stars to the center)</animated.p>
     </animated.div>
   );
 }

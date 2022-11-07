@@ -10,9 +10,10 @@ import ResumePage from './pages/resume/ResumePage';
 import Contact from './pages/contact/ContactPage';
 import SandboxPage from './pages/sandbox/SandboxPage';
 import { animated, useSpring } from 'react-spring';
+import { AppData } from '../../api/AppData';
 
 interface IMainWindowProps {
-
+  appData: AppData | undefined
 }
 
 function MainWindow(props: IMainWindowProps) {
@@ -47,7 +48,7 @@ function MainWindow(props: IMainWindowProps) {
         <Routes>
           <Route path='/about' element={<AboutPage />} />
           <Route path='/blog' element={<BlogPage />} />
-          <Route path='/projects' element={<ProjectsPage />} />
+          <Route path='/projects' element={<ProjectsPage projects={props.appData?.projects}/>} />
           <Route path='/resume' element={<ResumePage />} />
           <Route path='contact' element={<Contact />} />
           <Route path='sandbox' element={<SandboxPage />}/>

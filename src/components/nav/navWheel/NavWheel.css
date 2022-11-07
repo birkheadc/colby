@@ -8,6 +8,7 @@ div.nav-wheel {
   place-items: center;
 
   background: radial-gradient(var(--clr-bg-a), rgba(0, 0, 0, 0.5));
+  pointer-events: all;
 }
 
 div.nav-wheel>* {

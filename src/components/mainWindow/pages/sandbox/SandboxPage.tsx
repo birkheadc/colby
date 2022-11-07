@@ -1,5 +1,5 @@
 import * as React from 'react';
-import UnderConstruction from '../../../underConstruction/UnderConstruction';
+import ErrorDisplay from '../../../errorDisplay/ErrorDisplay';
 import './SandboxPage.css'
 
 interface ISandboxPageProps {
@@ -9,7 +9,7 @@ interface ISandboxPageProps {
 function SandboxPage(props: ISandboxPageProps): JSX.Element {
   return (
     <>
-      <UnderConstruction />
+      <ErrorDisplay message={"This page isn't ready yet"} />
     </>
   );
 }
