@@ -1,0 +1,9 @@
+div.projects-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  width: min(100vw, 40rem);
+  margin: 0 auto;
+  padding: 1.5em 0;
+}

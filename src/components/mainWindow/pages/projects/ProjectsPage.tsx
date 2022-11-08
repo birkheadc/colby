@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { IProject } from '../../../../api/AppData';
 import Loading from '../../../loading/Loading';
-import ProjectSelection from './projectSection/ProjectSelection';
+import Slider from '../../../slider/Slider';
+import ProjectSelection from './projectSection/ProjectSection';
 import './ProjectsPage.css'
 
 interface IProjectsPageProps {
@@ -19,10 +20,12 @@ function ProjectsPage(props: IProjectsPageProps) {
     <div className='main-content-wrapper'>
       <div className='projects-wrapper'>
         <h1>Projects</h1>
-        {props.projects.map(
-          project =>
-          <ProjectSelection key={project.id} project={project}/>
-        )}
+        <Slider interval={5000}>
+          {props.projects.map(
+            project =>
+            <ProjectSelection key={project.id} project={project}/>
+          )}
+        </Slider>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 div.resume-wrapper {
-  width: min(100vw, 50rem);
+  width: min(100vw, 40rem);
   margin: 0 auto;
-  padding: 1rem;
+  padding: 1.5em 0;
 }
 
 div.resume-wrapper p {
@@ -9,42 +9,9 @@ div.resume-wrapper p {
   line-height: 120%;
 }
 
-div.resume-wrapper p, div.resume-wrapper li {
-  font-size: 1.15rem;
-}
-
-div.resume-wrapper h1 {
-  font-size: 4rem;
-  border-width: 0 0 2px 0;
-  border-style: solid;
-  width: fit-content;
-  margin: 0 auto;
-}
-
-div.resume-wrapper h2 {
-  font-size: 2.5rem;
-}
-
-div.resume-wrapper h3 {
-  font-size: 2.5rem;
-}
-
-div.resume-wrapper h4 {
-  font-size: 1.7rem;
-}
-
-div.resume-wrapper h5 {
-  font-size: 1.4rem;
-}
-
 div.resume-pdf-link {
   margin: 0.5em 0 1em 0;
   text-align: center;
-}
-
-div.resume-body {
-  width: 80%;
-  margin: 0 auto;
 }
 
 div.resume-body section>ul {
@@ -58,6 +25,9 @@ div.resume-body section>ul>li {
   padding: 0 1em;
   border-width: 0 0 0 3px;
   border-style: solid;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
 }
 
 div.resume-body section>ul>li>ul>li {
@@ -78,7 +48,6 @@ div.resume-body section {
 @media (max-width: 980px) {
   div.resume-wrapper {
     width: 100%;
-    padding: 1em 0;
   }
 
   div.resume-body {

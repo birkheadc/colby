@@ -1,0 +1,21 @@
+div.slider-wrapper {
+  border-width: 3px;
+  border-style: solid;
+  box-sizing: border-box;
+  height: 25em;
+  overflow: hidden;
+}
+
+div.slider-wrapper-inner {
+  display: flex;
+  flex-direction: row;
+  width: 200%;
+  height: 100%;
+}
+
+div.slider-wrapper-inner>div {
+  width: 100%;
+  height: 100%;
+  padding: 1em;
+  overflow: hidden;
+}

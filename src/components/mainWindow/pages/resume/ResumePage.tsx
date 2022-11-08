@@ -52,7 +52,7 @@ function ResumePage(props: IResumePageProps) {
                 <h4>Cashier</h4>
                 <h5>Fall 2016 — Spring 2017</h5>
                 <ul className='resume-body-list'>
-                  <li>Part-time job at a convenience store in Nagoya, Japan</li>
+                  <li>Part-time at convenience store in Nagoya, Japan</li>
                 </ul>
               </li>
               <li>

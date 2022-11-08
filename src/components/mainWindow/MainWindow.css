@@ -10,8 +10,37 @@ div.main-content-wrapper {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+div.main-content-wrapper h1 {
+  font-size: 4em;
+  border-width: 0 0 2px 0;
+  border-style: solid;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+div.main-content-wrapper h2 {
+  font-size: 2.5em;
+}
+
+div.main-content-wrapper h3 {
+  font-size: 2.2em;
+}
+
+div.main-content-wrapper h4 {
+  font-size: 1.7em;
+}
+
+div.main-content-wrapper h5 {
+  font-size: 1.4em;
+}
+
+div.main-content-wrapper p, div.main-content-wrapper li {
+  font-size: 1.15em;
+}
+
 @media (max-width: 980px) {
   div.main-content-wrapper {
     width: 100%;
+    font-size: 150%;
   }
 }

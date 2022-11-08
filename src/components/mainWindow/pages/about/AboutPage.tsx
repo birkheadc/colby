@@ -49,7 +49,7 @@ function AboutPage(props: IAboutPageProps) {
       I looked at my kingdom<br/>
       I was finally there<br/>
       To sit on my throne as the prince of Bel-Air</p>
-      <p style={{textAlign: 'center', padding: '2em'}}>
+      <p style={{textAlign: 'center', padding : '2em'}}>
       Now, this is a story all about how<br/>
       My life got flipped-turned upside down<br/>
       And I'd like to take a minute<br/>
