@@ -19,7 +19,7 @@ function ProjectsPage(props: IProjectsPageProps) {
       <>
       {props.projects.map(
         project =>
-        <ProjectSelection project={project}/>
+        <ProjectSelection key={project.id} project={project}/>
       )}
       </>
     );

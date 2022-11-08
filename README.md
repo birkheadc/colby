@@ -30,15 +30,15 @@ The basic steps I use go as follows:
     - In the `module` section, make sure to add rules for .ts / .tsx files if using typescript. Also add rules for .css or stylesheets will not load properly.
   - Create `.babelrc` and add babel presets as shown.
   - Add a few scripts to package.json:
-  ```
+```
  "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server .",
     "build": "webpack ."
   },
-  ```
+```
   - Create and render root in `index.tsx`:
-  ```
+```
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
 
@@ -53,9 +53,46 @@ if (container != null) {
   const root = createRoot(container);
   root.render(<App />);
 }
-  ```
+```
 
  - Run `npm run start` and the dev server should come up!
+
+ ## Environment Variables
+
+The first large hurdle I ran into with moving away from `create-react-app` was in setting up environment variables. As it turns out, `create-react-app` was doing a lot of this under the hood.
+
+I ended up using installing 3 modules to take care of extracting environment variables from a text file at build time, and making those variables available to the application.
+
+First, install the modules as development  dependencies:
+```
+npm install --save-dev dotenv dotenv-webpack node-polyfill-webpack-plugin
+```
+Second, edit `webpack.config.js`. Add the plugins, and add a fallback for 'fs':
+```
+...
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
+...
+module.exports = {
+  ...
+  resolve: {
+    ...
+    fallback: {
+      "fs": false
+    }
+    ...
+  }
+  ...
+  plugins: [
+    ...
+    new NodePolyfillPlugin(),
+    new Dotenv()
+  ]
+  ...
+}
+```
+
+Lastly, create a file called `.env` in the root directory. TODO: WRITE THIS
 
 # Asset Credits
 

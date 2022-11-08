@@ -1,4 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 const path = require('path');
 
 module.exports = {
@@ -24,7 +26,9 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
-    fallback: { "path": false }
+    fallback: {
+      "fs": false
+    }
   },
   module: {
     rules: [
@@ -45,6 +49,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'public', 'index.html')
-    })
+    }),
+    new NodePolyfillPlugin(),
+    new Dotenv()
   ]
 }
