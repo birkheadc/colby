@@ -65,7 +65,7 @@ I ended up using installing 3 modules to take care of extracting environment var
 
 First, install the modules as development  dependencies:
 ```
-npm install --save-dev dotenv dotenv-webpack node-polyfill-webpack-plugin
+npm install --save-dev dotenv-webpack node-polyfill-webpack-plugin
 ```
 Second, edit `webpack.config.js`. Add the plugins, and add a fallback for 'fs':
 ```
@@ -86,7 +86,9 @@ module.exports = {
   plugins: [
     ...
     new NodePolyfillPlugin(),
-    new Dotenv()
+    new Dotenv({
+      systemvars: true
+    })
   ]
   ...
 }

@@ -51,6 +51,8 @@ module.exports = {
       template: path.join(__dirname, 'public', 'index.html')
     }),
     new NodePolyfillPlugin(),
-    new Dotenv()
+    new Dotenv({
+      systemvars: true
+    })
   ]
 }
