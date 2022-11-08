@@ -8,9 +8,7 @@ interface ISandboxPageProps {
 
 function SandboxPage(props: ISandboxPageProps): JSX.Element {
   return (
-    <>
-      <ErrorDisplay message={"This page isn't ready yet"} />
-    </>
+    <ErrorDisplay message={"This page isn't ready yet"} />
   );
 }
 

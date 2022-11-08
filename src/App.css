@@ -31,7 +31,5 @@ a:hover, a:active {
 }
 
 @media (max-width: 980px) {
-  html {
-    font-size: 200%;
-  }
+  
 }

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IProject } from '../../../../api/AppData';
+import Loading from '../../../loading/Loading';
 import ProjectSelection from './projectSection/ProjectSelection';
 import './ProjectsPage.css'
 
@@ -9,27 +10,19 @@ interface IProjectsPageProps {
 
 function ProjectsPage(props: IProjectsPageProps) {
 
-  function displayProjects(): React.ReactElement {
-    if (props.projects == null) {
-      return (
-        <p>loading...</p>
-      );
-    }
+  if (props.projects == null) {
     return (
-      <>
-      {props.projects.map(
-        project =>
-        <ProjectSelection key={project.id} project={project}/>
-      )}
-      </>
+      <Loading />
     );
   }
-
   return (
     <div className='main-content-wrapper'>
       <div className='projects-wrapper'>
         <h1>Projects</h1>
-        {displayProjects()}
+        {props.projects.map(
+          project =>
+          <ProjectSelection key={project.id} project={project}/>
+        )}
       </div>
     </div>
   );

@@ -1,0 +1,38 @@
+div.loading-wrapper {
+  --size: 250px;
+  width: var(--size);
+  height: 100%;
+  transform: scale(var(--nav-scale));
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  display: grid;
+  grid-template: 1fr / 1fr;
+  place-items: center;
+}
+
+div.loading-wrapper > * {
+  grid-column: 1 / 1;
+  grid-row: 1 / 1;
+}
+
+div.loading-wrapper > h1 {
+  font-size: max(calc(var(--size) / 15), 15px);
+}
+
+@keyframes spin {
+  from { transform: rotate(0); }
+  to { transform: rotate(1turn); }
+}
+
+div.loading-spinner {
+  background-image: conic-gradient(transparent 25%, var(--clr-text-a));
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+  -webkit-mask:radial-gradient(circle calc(var(--size) / 2),transparent 98%,#fff 100%);
+  mask:radial-gradient(circle calc(var(--size) / 2),transparent 98%,#fff 100%);
+}
