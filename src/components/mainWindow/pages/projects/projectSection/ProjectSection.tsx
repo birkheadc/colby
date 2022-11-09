@@ -14,8 +14,8 @@ function ProjectSection(props: IProjectSectionProps): JSX.Element {
       <div>
         <h2>{project.name}</h2>
         <div>
-          <a href={project.site}>Site</a>
-          <a href={project.source}>Source</a>
+          <a href={project.site} target='_blank' rel='noreferrer'>Site</a>
+          <a href={project.source} target='_blank' rel='noreferrer'>Source</a>
         </div>
       </div>
       <p>{project.shortDescriptions[0].content}</p>

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { IBlurb } from '../../../../api/AppData';
+import { Env } from '../../../../env/Env';
 import Loading from '../../../loading/Loading';
 import Slider from '../../../slider/Slider';
 import './BlogPage.css'
@@ -17,6 +18,7 @@ function BlogPage(props: IBlogPageProps) {
     <div className='main-content-wrapper'>
       <div className='blogs-wrapper'>
         <h1>Blog</h1>
+        <a href={Env.BLOG_URL} target='_blank' rel='noreferrer'>Visit Blog</a>
         <Slider interval={5000}>
           {props.blurbs.map(
             blurb =>
