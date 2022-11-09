@@ -1,15 +1,10 @@
-html {
-  color: var(--clr-text-a);
-  background-color: var(--clr-bg-a);
-  height: 100%;
+.mail-copy-link {
+  width: 30px;
+  height: 30px;
 }
 
-body {
-  height: 100%;
-}
-
-div#root {
-  height: 100%;
+.mail-copy-link:active {
+  transform: scale(0.9);
 }
 
 @keyframes linkHover {
@@ -21,16 +16,15 @@ div#root {
   }
 }
 
-a {
+.mail-copy-link>button {
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
   color: var(--clr-accent-c);
 }
 
-a:hover, a:active {
+.mail-copy-link>button:hover, .mail-copy-link>button:active {
   animation-name: linkHover;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
-}
-
-@media (max-width: 980px) {
-  
 }

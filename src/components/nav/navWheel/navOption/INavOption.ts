@@ -1,6 +1,6 @@
 export interface INavOption {
   icon: JSX.Element,
   title: string,
-  description: string,
+  contents: JSX.Element,
   to: string
 }

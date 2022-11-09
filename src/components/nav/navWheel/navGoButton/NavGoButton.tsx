@@ -4,7 +4,8 @@ import { INavOption } from '../navOption/INavOption';
 import './NavGoButton.css'
 
 interface INavGoButtonProps {
-  selection: INavOption,
+  title: string,
+  description: string,
   navigate(): void,
 }
 
@@ -65,12 +66,12 @@ function NavGoButton(props: INavGoButtonProps): JSX.Element {
         duration: 150
       }
     })
-  }, [props.selection]);
+  }, []);
 
   return (
-    <div className='nav-go-button-wrapper'>
-      <animated.button className='nav-go-button' onClick={props.navigate} onPointerEnter={animateButtonHover} onPointerLeave={animateButtonLeave} style={{...hoverSpring, ...navButtonSpring}}>{props.selection.title}</animated.button>
-      <animated.p style={navButtonSpring}>{props.selection.description}</animated.p>
+    <div className='nav-option-contents-wrapper'>
+      <animated.button className='nav-go-button' onClick={props.navigate} onPointerEnter={animateButtonHover} onPointerLeave={animateButtonLeave} style={{...hoverSpring, ...navButtonSpring}}>{props.title}</animated.button>
+      <animated.p style={navButtonSpring}>{props.description}</animated.p>
     </div>
   )
 }

@@ -7,7 +7,6 @@ import AboutPage from './pages/about/AboutPage';
 import BlogPage from './pages/blog/BlogPage';
 import ProjectsPage from './pages/projects/ProjectsPage';
 import ResumePage from './pages/resume/ResumePage';
-import Contact from './pages/contact/ContactPage';
 import SandboxPage from './pages/sandbox/SandboxPage';
 import { animated, useSpring } from 'react-spring';
 import { AppData } from '../../api/AppData';
@@ -50,7 +49,6 @@ function MainWindow(props: IMainWindowProps) {
           <Route path='/blog' element={<BlogPage blurbs={props.appData?.blurbs}/>} />
           <Route path='/projects' element={<ProjectsPage projects={props.appData?.projects}/>} />
           <Route path='/resume' element={<ResumePage />} />
-          <Route path='contact' element={<Contact />} />
           <Route path='sandbox' element={<SandboxPage />}/>
           <Route path='/' element={<WelcomePage />} />
           <Route path='*' element={<Navigate replace={true} to={{pathname: '/'}} />} />

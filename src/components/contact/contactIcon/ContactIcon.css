@@ -1,0 +1,23 @@
+.icon-link {
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+}
+
+.icon-link>img {
+  max-width: 35px;
+  border-radius: 50%;
+  border-style: solid;
+  background-color: var(--clr-accent-a);
+  border-color: var(--clr-accent-a);
+  border-width: 1px;
+}
+
+.icon-link:hover>img, .icon-link:active>img {
+  background-color: var(--clr-accent-b);
+  border-color: var(--clr-accent-b);
+}
+
+.icon-link:active>img {
+  transform: scale(0.9);
+}

@@ -1,4 +1,4 @@
-div.nav-go-button-wrapper {
+div.nav-option-contents-wrapper {
   border-radius: 50%;
   width: 60%;
   height: 60%;
@@ -26,7 +26,11 @@ button.nav-go-button {
   font-family: var(--font-b);
 }
 
-div.nav-go-button-wrapper>p {
+button.nav-go-button:active {
+  transform: scale(0.9);
+}
+
+div.nav-option-contents-wrapper>p {
   width: 75%;
   height: 15%;
   text-align: center;

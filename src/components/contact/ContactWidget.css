@@ -1,0 +1,18 @@
+div.contact-widget-wrapper>h2 {
+  font-size: 1.6em;
+  color: var(--clr-accent-c);
+}
+
+div.contact-widget-wrapper>ul { 
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1em;
+}
+
+div.contact-widget-mail-copy-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1em;
+}
