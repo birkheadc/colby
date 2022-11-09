@@ -25,7 +25,7 @@ function ProjectSection(props: IProjectSectionProps): JSX.Element {
         <li key={tech}>{tech}</li>
       )}
       </ul>
-      <p>{project.longDescriptions[0].content}</p>
+      <p className='project-section-long-description'>{project.longDescriptions[0].content}</p>
     </div>
   );
 }

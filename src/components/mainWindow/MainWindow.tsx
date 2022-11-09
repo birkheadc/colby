@@ -47,7 +47,7 @@ function MainWindow(props: IMainWindowProps) {
       <animated.main style={spring}>
         <Routes>
           <Route path='/about' element={<AboutPage />} />
-          <Route path='/blog' element={<BlogPage />} />
+          <Route path='/blog' element={<BlogPage blurbs={props.appData?.blurbs}/>} />
           <Route path='/projects' element={<ProjectsPage projects={props.appData?.projects}/>} />
           <Route path='/resume' element={<ResumePage />} />
           <Route path='contact' element={<Contact />} />

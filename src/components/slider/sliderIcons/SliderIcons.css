@@ -1,0 +1,20 @@
+div.slider-icons-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0.5em;
+  gap: 0.5em;
+}
+
+div.slider-icon {
+  border-radius: 50%;
+  border-width: 2px;
+  border-style: solid;
+  width: 1em;
+  height: 1em;
+  cursor: pointer;
+}
+
+div.slider-icon-active {
+  background-color: var(--clr-text-a);
+}

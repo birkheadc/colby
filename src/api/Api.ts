@@ -40,7 +40,7 @@ async function fetchProjects(): Promise<IProject[] | null> {
 }
 
 async function fetchBlurbs(): Promise<IBlurb[] | null> {
-  const url: string | null = process.env.REACT_APP_BLOG_URL ? process.env.REACT_APP_BLOG_URL + '/blurbs/latest.json?n=3' : null;
+  const url: string | null = process.env.REACT_APP_BLOG_URL ? process.env.REACT_APP_BLOG_URL + '/blurbs/latest.json?n=5' : null;
   if (url == null) {
     console.log('Unable to fetch blog blurbs: Environment Variable not found.');
     return [];

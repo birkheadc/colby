@@ -11,11 +11,8 @@ interface IProjectsPageProps {
 
 function ProjectsPage(props: IProjectsPageProps) {
 
-  if (props.projects == null) {
-    return (
-      <Loading />
-    );
-  }
+  if (props.projects == null) return <Loading />;
+  
   return (
     <div className='main-content-wrapper'>
       <div className='projects-wrapper'>

@@ -2,6 +2,7 @@ div.project-section-wrapper {
   display: flex;
   flex-direction: column;
   gap: 1em;
+  height: 100%;
 }
 
 div.project-section-wrapper>div {
@@ -28,4 +29,8 @@ div.project-section-wrapper>ul>li {
   border-width: 1px 0 1px 0;
   border-style: solid;
   padding: 0.2em 0.2em;
+}
+
+p.project-section-long-description {
+  margin: auto;
 }

@@ -4,13 +4,15 @@ div.slider-wrapper {
   box-sizing: border-box;
   height: 25em;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 div.slider-wrapper-inner {
   display: flex;
   flex-direction: row;
   width: 200%;
-  height: 100%;
+  flex-grow: 1;
 }
 
 div.slider-wrapper-inner>div {
