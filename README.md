@@ -57,6 +57,12 @@ if (container != null) {
 
  - Run `npm run start` and the dev server should come up!
 
+## React-app-env.d.ts
+
+I honestly don't know much about this file, but its existence magically makes red squiglies on asset import statements (for example `import li_icon from '../../assets/images/social-icons/linkedin.png';`) go away.
+
+It seems to be something normally created by `create-react-app`, but I had to create it manually.
+
  ## Environment Variables
 
 The first large hurdle I ran into with moving away from `create-react-app` was in setting up environment variables. As it turns out, `create-react-app` was doing a lot of this under the hood.
