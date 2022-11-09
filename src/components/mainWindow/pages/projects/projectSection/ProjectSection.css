@@ -10,6 +10,7 @@ div.project-section-wrapper>div {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  padding: 0 1em;
 }
 
 div.project-section-wrapper>div>div {
@@ -29,6 +30,11 @@ div.project-section-wrapper>ul>li {
   border-width: 1px 0 1px 0;
   border-style: solid;
   padding: 0.2em 0.2em;
+}
+
+p.project-section-short-description {
+  text-align: justify;
+  padding: 0 0.5em;
 }
 
 p.project-section-long-description {

@@ -18,7 +18,7 @@ function ProjectSection(props: IProjectSectionProps): JSX.Element {
           <a href={project.source} target='_blank' rel='noreferrer'>Source</a>
         </div>
       </div>
-      <p>{project.shortDescriptions[0].content}</p>
+      <p className='project-section-short-description'>{project.shortDescriptions[0].content}</p>
       <ul>
       {project.technologies.map(
         tech =>
