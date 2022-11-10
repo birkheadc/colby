@@ -67,9 +67,9 @@ It seems to be something normally created by `create-react-app`, but I had to cr
 
 The first large hurdle I ran into with moving away from `create-react-app` was in setting up environment variables. As it turns out, `create-react-app` was doing a lot of this under the hood.
 
-I ended up using installing 3 modules to take care of extracting environment variables from a text file at build time, and making those variables available to the application.
+I ended up using installing 3 packages to take care of extracting environment variables from a text file at build time, and making those variables available to the application.
 
-First, install the modules as development  dependencies:
+First, install the packages as development  dependencies:
 ```
 npm install --save-dev dotenv-webpack node-polyfill-webpack-plugin
 ```

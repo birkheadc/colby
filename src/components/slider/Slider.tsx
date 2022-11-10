@@ -11,6 +11,7 @@ interface ISliderProps {
 
 function Slider(props: ISliderProps): JSX.Element {
 
+  const [startSelection, setStartSelection] = React.useState<number>(0);
   const [current, setCurrent] = React.useState<number>(0);
   const [isAuto, setAuto] = React.useState<boolean>(true);
   const [intervalId, setIntervalId] = React.useState<NodeJS.Timer>();
@@ -18,16 +19,24 @@ function Slider(props: ISliderProps): JSX.Element {
   const [dragX, setDragX] = React.useState<number>(0);
   let startX: number = 0;
   
-  const selectionWidth: number = (document.querySelector('#slider-wrapper-inner')?.clientWidth ?? 0) / props.children.length;
+  const SNAP_DISTANCE: number = (((document.querySelector('#slider-wrapper-inner')?.clientWidth ?? 0) / props.children.length) / 2) * 0.5;
 
-  const [spring, springApi] = useSpring(() => ({
+  const [outerSpring, outerSpringApi] = useSpring(() => ({
+    from: { transform: 'translate(0%, 0%)'}
+  }));
+
+  const [innerSpring, innerSpringApi] = useSpring(() => ({
     from: { transform: 'translate(0px, 0px)'}
   }));
 
-
-
   function goTo(index: number): void {
-    console.log("Going to: ", index);
+    if (index < 0) {
+      return;
+    }
+    if (index >= props.children.length) {
+      return;
+    }
+    setCurrent(index);
   }
 
   function goNext(): void {
@@ -48,10 +57,29 @@ function Slider(props: ISliderProps): JSX.Element {
   }, [isAuto]);
 
   React.useEffect(() => {
-    springApi.start({
-      to: { transform: 'translate(' + current * selectionWidth * -1 + 'px, 0px)' }
+    if (isDragging === false) {
+      outerSpringApi.start({
+        to: { transform: 'translate(' + (100 / props.children.length) * current * -1 + '%, 0%)' }
+      });
+    }
+  }, [current, isDragging, dragX]);
+
+  React.useEffect(() => {
+    innerSpringApi.start({
+      to: { transform: 'translate(' + dragX + 'px, 0px)' }
     });
-  }, [current]);
+    if (dragX < (SNAP_DISTANCE * -1)) {
+      goTo(startSelection + 1);
+      return;
+    }
+    else if (dragX > SNAP_DISTANCE) {
+      goTo(startSelection - 1);
+      return;
+    }
+    if (isDragging === true) {
+      goTo(startSelection);
+    }
+  }, [dragX]);
 
   const handleSelect = (index: number): void => {
     setAuto(false);
@@ -62,18 +90,20 @@ function Slider(props: ISliderProps): JSX.Element {
     window.addEventListener('pointermove', handleDrag);
     window.addEventListener('pointerup', handleStopDrag);
     startX = e.clientX;
+    setStartSelection(current);
     setDragging(true);
   }
 
   const handleDrag = (e: MouseEvent): void => {
     clearInterval(intervalId);
     setAuto(false);
-    setDragX(e.clientX - startX);
+    setDragX(Math.max(Math.min(e.clientX - startX, SNAP_DISTANCE * 2), SNAP_DISTANCE * -2));
   }
 
   const handleStopDrag = (): void => {
     setDragging(false);
     window.removeEventListener('pointermove', handleDrag);
+    setDragX(0);
     // todo Snap to nearest selection
   }
 
@@ -83,8 +113,8 @@ function Slider(props: ISliderProps): JSX.Element {
 
   return (
     <div className='slider-wrapper'>
-      <animated.div className='slider-wrapper-inner' id='slider-wrapper-inner' style={spring}>
-        <animated.div className='slider-inner' onPointerDown={handleBeginDrag} style={ {transform: 'translate(' + dragX + 'px, 0px)' } }>
+      <animated.div className='slider-wrapper-inner' id='slider-wrapper-inner' style={outerSpring}>
+        <animated.div className='slider-inner' onPointerDown={handleBeginDrag} style={innerSpring}>
           {props.children}
         </animated.div>
       </animated.div>

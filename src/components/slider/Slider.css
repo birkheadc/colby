@@ -4,10 +4,11 @@ div.slider-wrapper {
   box-sizing: border-box;
   height: 25em;
   position: relative;
-  /* overflow: hidden; */
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  touch-action: none;
 }
 
 div.slider-wrapper-inner {
