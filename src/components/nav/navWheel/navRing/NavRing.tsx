@@ -98,14 +98,14 @@ function NavRing(props: INavRingProps): JSX.Element {
     return angle;
   }
 
-  const handleRotateStart = (e: React.MouseEvent): void => {
+  const handleBeginRotate = (e: React.MouseEvent): void => {
     prevRotation = rotation;
     setRotating(true);
     const angle = calculateAngleFromScreenCenterToCursor(e.clientX, e.clientY);
     startAngle = angle - rotation;
 
     window.addEventListener('pointermove', handleRotate);
-    window.addEventListener('pointerup', handleRotateStop);
+    window.addEventListener('pointerup', handleStopRotate);
 
     document.body.style.setProperty('overscroll-behavior', 'none');
   }
@@ -121,14 +121,14 @@ function NavRing(props: INavRingProps): JSX.Element {
     setRotation(target);
   }
 
-  const handleRotateStop = (): void => {
+  const handleStopRotate = (): void => {
     window.removeEventListener('pointermove', handleRotate);
     document.body.style.setProperty('overscroll-behavior', 'auto');
     setRotating(false);
   }
 
   return (
-    <animated.div className='nav-ring' onPointerDown={handleRotateStart} style={ringSpring}>
+    <animated.div className='nav-ring' onPointerDown={handleBeginRotate} style={ringSpring}>
       {props.navIcons}
     </animated.div>
   );

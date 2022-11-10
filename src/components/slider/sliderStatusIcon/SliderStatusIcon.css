@@ -1,0 +1,9 @@
+button.slider-status-icon-wrapper {
+  width: 1.5em;
+  height: 1.5em;
+  margin: 0.5em;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  cursor: pointer;
+}
