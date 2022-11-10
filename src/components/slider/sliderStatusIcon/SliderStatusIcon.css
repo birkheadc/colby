@@ -6,4 +6,11 @@ button.slider-status-icon-wrapper {
   bottom: 0;
   right: 0;
   cursor: pointer;
+  color: var(--clr-accent-c);
+}
+
+button.slider-status-icon-wrapper:hover, button.slider-status-icon-wrapper:active {
+  animation-name: linkHover;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
 }

@@ -2,7 +2,6 @@ div.slider-wrapper {
   border-width: 3px;
   border-style: solid;
   box-sizing: border-box;
-  height: 25em;
   position: relative;
   overflow: hidden;
   display: flex;

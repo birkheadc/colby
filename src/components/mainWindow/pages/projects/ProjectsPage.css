@@ -7,3 +7,9 @@ div.projects-wrapper {
   margin: 0 auto;
   padding: 1.5em 0;
 }
+
+@media (max-width: 980px) {
+  div.projects-wrapper {
+    width: 90vw;
+  }
+}

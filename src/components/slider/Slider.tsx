@@ -50,7 +50,7 @@ function Slider(props: ISliderProps): JSX.Element {
     else {
       const interval = setInterval(() => {
         goNext();
-      }, 2000);
+      }, props.interval);
       setIntervalId(interval);
       return () => clearInterval(interval);
     }
