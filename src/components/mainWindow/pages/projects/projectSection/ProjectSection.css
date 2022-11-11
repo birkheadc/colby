@@ -44,6 +44,7 @@ div.project-section-long-description-wrapper {
   justify-content: center;
   align-items: center;
   border: var(--border-nav-a);
+  border-color: var(--project-color);
   font-size: 15px;
 }
 
