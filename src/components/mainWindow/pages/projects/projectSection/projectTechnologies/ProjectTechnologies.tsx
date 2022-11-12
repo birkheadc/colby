@@ -18,7 +18,7 @@ function ProjectTechnologies(props: IProjectTechnologiesProps): JSX.Element {
         <svg key={'svg_' + props.projectId + '_' + i} viewBox='0 0 500 500'>
           <path id={'curve_' + props.projectId + '_' + i} fill='transparent' d='M25,250A225,225 0 1 1475,250A225,225 0 1 125,250M250,250' />
           <text className='project-technologies-text' width='500'>
-            <textPath startOffset={((i * (100 / props.technologies.length)) / 100) + '%'} xlinkHref={'curve_' + props.projectId + '_' + i}>
+            <textPath startOffset={(i * (100 / props.technologies.length)) + '%'} xlinkHref={'#curve_' + props.projectId + '_' + i}>
                 {tech}
             </textPath>
           </text>

@@ -23,7 +23,6 @@ div.slider-icon-active {
 
 @media (max-width: 980px) {
   div.slider-icons-wrapper {
-    justify-content: space-evenly;
-    gap: 0;
+    gap: 2em;
   }
 }

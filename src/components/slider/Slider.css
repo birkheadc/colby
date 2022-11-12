@@ -1,5 +1,5 @@
 div.slider-wrapper {
-  border-width: 3px;
+  border-width: 3px 0 3px 0;
   border-style: solid;
   box-sizing: border-box;
   position: relative;
@@ -8,10 +8,11 @@ div.slider-wrapper {
   flex-direction: column;
   justify-content: space-between;
   touch-action: none;
+  user-select: none;
 }
 
 div.slider-wrapper-inner {
-  width: 300%;
+  width: var(--slider-width);
   flex-grow: 1;
 }
 

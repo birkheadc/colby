@@ -113,7 +113,7 @@ function Slider(props: ISliderProps): JSX.Element {
 
   return (
     <div className='slider-wrapper'>
-      <animated.div className='slider-wrapper-inner' id='slider-wrapper-inner' style={outerSpring}>
+      <animated.div className='slider-wrapper-inner' id='slider-wrapper-inner' style={{...outerSpring, ...{'--slider-width': (100 * props.children.length) + '%'} as React.CSSProperties}}>
         <animated.div className='slider-inner' onPointerDown={handleBeginDrag} style={innerSpring}>
           {props.children}
         </animated.div>

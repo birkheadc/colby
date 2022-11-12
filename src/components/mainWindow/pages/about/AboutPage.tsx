@@ -8,6 +8,12 @@ interface IAboutPageProps {
 function AboutPage(props: IAboutPageProps) {
   return (
     <div className='main-content-wrapper'>
+      <svg viewBox='0 0 500 500'>
+        <path id={'curve'} fill='blue' d='M25,250A225,225 0 1 1475,250A225,225 0 1 125,250M250,250' />
+        <text style={{ fill: 'white', stroke: 'white'}} width='500'>
+            THIS IS A REALLY LONG STRING I'M SO TIRED
+        </text>
+      </svg>
       <h1 style={{textAlign: 'center', padding: '2em'}}>About</h1>
       <p style={{textAlign: 'center', padding: '2em'}}>
       Now, this is a story all about how<br/>

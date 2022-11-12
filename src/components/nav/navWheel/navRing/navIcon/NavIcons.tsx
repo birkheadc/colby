@@ -5,18 +5,21 @@ import './NavIcons.css'
 
 interface INavIconsProps {
   options: INavOption[],
-  selection: INavOption
+  selection: INavOption,
+  select(deg: number): void
 }
 
 interface IIconRenderData {
   icon: JSX.Element,
-  transform: string,
+  rotation: number,
   color: string
 }
 
 function NavIcons(props: INavIconsProps): JSX.Element {
 
   const ROTATION_INCREMENT = 360 / props.options.length;
+  const MAXIMUM_DELTA_TIME: number = 250;
+  const MAXIMUM_DELTA_SPACE: number = 5;
 
   function calculateIconRenderData(): IIconRenderData[] {
     let data: IIconRenderData[] = [];
@@ -24,7 +27,7 @@ function NavIcons(props: INavIconsProps): JSX.Element {
       const rotation: number = ROTATION_INCREMENT * i;
       data.push({
         icon: props.options[i].icon,
-        transform: 'rotate(' + rotation + 'deg)',
+        rotation: rotation,
         color: props.options[i].title === props.selection.title ? 'var(--clr-accent-c)' : 'var(--clr-text-a)'
       });
     }
@@ -33,12 +36,33 @@ function NavIcons(props: INavIconsProps): JSX.Element {
 
   const data: IIconRenderData[] = calculateIconRenderData();
 
+  const handlePointerDown = (e: React.MouseEvent, degrees: number): void => {
+    const startSpace = { x: e.clientX, y: e.clientY };
+    const startTime = +new Date();
+    window.addEventListener('pointerup', (e: PointerEvent) => handlePointerUp(e, startSpace, startTime, degrees));
+  }
+
+  const handlePointerUp = (e: PointerEvent, startSpace: { x: number, y: number}, startTime: number, degrees: number): void => {
+    const deltaTime: number = Math.abs(+new Date() - startTime);
+    const deltaSpace: { x: number, y: number } = { x: Math.abs(startSpace.x - e.clientX), y: Math.abs(startSpace.y - e.clientY) };
+    console.log('DeltaTime: ', deltaTime);
+    console.log('DeltaSpace', deltaSpace)
+    if (deltaTime <= MAXIMUM_DELTA_TIME && deltaSpace.x <= MAXIMUM_DELTA_SPACE && deltaSpace.y <= MAXIMUM_DELTA_SPACE) {
+      console.log('Within range, rotating!');
+      props.select(degrees);
+    }
+    else {
+      console.log('Out of range, no action.');
+    }
+    window.removeEventListener('pointerup', () => handlePointerUp(e, startSpace, startTime, degrees));
+  }
+
   return (
     <>
       {data.map(
         icon => 
-        <div className='nav-icon-wrapper' key={icon.icon.key} style={{transform: icon.transform, color: icon.color}}>
-          <span>{icon.icon}</span>
+        <div className='nav-icon-wrapper' key={icon.icon.key} style={{transform: 'rotate(' + icon.rotation + 'deg)', color: icon.color}}>
+          <button onPointerDown={(e: React.MouseEvent) => handlePointerDown(e, icon.rotation)} >{icon.icon}</button>
         </div>
       )}
     </>

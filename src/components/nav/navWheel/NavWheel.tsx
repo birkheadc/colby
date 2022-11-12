@@ -52,12 +52,12 @@ function NavWheel(props: INavWheelProps): JSX.Element {
       contents: <ContactWidget />,
       to: '/contact'
     },
-    {
-      icon: <RectangleStackIcon key='6'/>,
-      title: 'Sandbox',
-      contents: <NavGoButton navigate={() => props.navigate('/sandbox')} description={'Where stray widgets gather and play'} title={'Sandbox'}/>,
-      to: '/sandbox'
-    },
+    // {
+    //   icon: <RectangleStackIcon key='6'/>,
+    //   title: 'Sandbox',
+    //   contents: <NavGoButton navigate={() => props.navigate('/sandbox')} description={'Where stray widgets gather and play'} title={'Sandbox'}/>,
+    //   to: '/sandbox'
+    // },
   ];
 
   const ROTATION_INCREMENT: number = 360 / NAV_OPTIONS.length;
@@ -89,7 +89,7 @@ function NavWheel(props: INavWheelProps): JSX.Element {
 
   return (
     <animated.div className='nav-wheel' style={navWheelSpring}>
-      <NavRing selection={NAV_OPTIONS.findIndex(o => o.title === currentSelection.title)} navIcons={<NavIcons options={NAV_OPTIONS} selection={currentSelection}/>} options={NAV_OPTIONS} select={(selection: INavOption) => {setCurrentSelection(selection)}} />
+      <NavRing selection={NAV_OPTIONS.findIndex(o => o.title === currentSelection.title)} options={NAV_OPTIONS} select={(selection: INavOption) => {setCurrentSelection(selection)}} />
         {currentSelection.contents}
     </animated.div>
   );

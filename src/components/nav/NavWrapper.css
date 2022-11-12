@@ -6,7 +6,6 @@ nav {
   user-select: none;
   pointer-events: none;
   z-index: 1;
-  -webkit-tap-highlight-color:transparent
 }
 
 div.nav-wrapper {

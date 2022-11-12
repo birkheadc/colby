@@ -61,6 +61,7 @@ function ResumePage(props: IResumePageProps) {
                 <ul className='resume-body-list'>
                   <li>Sunlight Supply Inc. in Woodland WA, USA</li>
                   <li>Quality Control and Shift Second</li>
+                  <li>Designed operation instructions for forming prototypes and first-run products</li>
                 </ul>
               </li>
             </ul>

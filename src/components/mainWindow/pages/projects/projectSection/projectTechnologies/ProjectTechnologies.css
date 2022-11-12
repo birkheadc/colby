@@ -26,8 +26,8 @@ div.project-technologies-wrapper>* {
 }
 
 text.project-technologies-text {
-  stroke: white;
-  fill: white;
+  stroke: var(--project-color);
+  fill: var(--project-color);
 
   font-size: 25px;
 

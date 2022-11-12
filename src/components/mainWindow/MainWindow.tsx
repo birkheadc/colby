@@ -10,6 +10,7 @@ import ResumePage from './pages/resume/ResumePage';
 import SandboxPage from './pages/sandbox/SandboxPage';
 import { animated, useSpring } from 'react-spring';
 import { AppData } from '../../api/AppData';
+import RemoveTrailingSlash from '../removeTrailingSlash/RemoveTrailingSlash';
 
 interface IMainWindowProps {
   appData: AppData | undefined
@@ -43,6 +44,7 @@ function MainWindow(props: IMainWindowProps) {
   return (
     <>
       {displayNav()}
+      <RemoveTrailingSlash />
       <animated.main style={spring}>
         <Routes>
           <Route path='/about' element={<AboutPage />} />

@@ -16,6 +16,7 @@ function ProjectSection(props: IProjectSectionProps): JSX.Element {
 
   return (
     <div className='project-section-wrapper' style={{ "--project-color": colorString } as React.CSSProperties}>
+      
       <div className='project-section-header'>
         <h2 draggable='false'>{project.name}</h2>
         <div className='project-section-header-links'>

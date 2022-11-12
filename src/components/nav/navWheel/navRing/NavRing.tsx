@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { animated, useSpring } from 'react-spring';
 import { INavOption } from '../navOption/INavOption';
+import NavIcons from './navIcon/NavIcons';
 import './NavRing.css'
 
 interface INavRingProps {
   options: INavOption[],
-  navIcons: JSX.Element,
   select(selection: INavOption): void,
   selection: number
 }
@@ -100,7 +100,6 @@ function NavRing(props: INavRingProps): JSX.Element {
 
   const handleBeginRotate = (e: React.MouseEvent): void => {
     prevRotation = rotation;
-    setRotating(true);
     const angle = calculateAngleFromScreenCenterToCursor(e.clientX, e.clientY);
     startAngle = angle - rotation;
 
@@ -111,7 +110,8 @@ function NavRing(props: INavRingProps): JSX.Element {
   }
 
   const handleRotate = (e: PointerEvent): void => {
-    e.preventDefault();
+    e.stopPropagation();
+    setRotating(true);
     const angle = calculateAngleFromScreenCenterToCursor(e.clientX, e.clientY);
     let target = angle - startAngle;
     while (Math.abs(target - prevRotation) > 180) {
@@ -123,13 +123,22 @@ function NavRing(props: INavRingProps): JSX.Element {
 
   const handleStopRotate = (): void => {
     window.removeEventListener('pointermove', handleRotate);
+    window.removeEventListener('pointerup', handleStopRotate);
     document.body.style.setProperty('overscroll-behavior', 'auto');
     setRotating(false);
   }
 
+  const handleRotateRDegrees = (r: number): void => {
+    const relativeR = (r - (360 - rotation)) % 360;
+
+    // It is possible for the user to trigger this rotation while also dragging slightly if they are fast,
+    // So we do some fancy math to ensure the final rotation is an even number.
+    setRotation(ro => Math.round((ro - relativeR) / ROTATION_INCREMENT) * ROTATION_INCREMENT);
+  }
+
   return (
     <animated.div className='nav-ring' onPointerDown={handleBeginRotate} style={ringSpring}>
-      {props.navIcons}
+      <NavIcons options={props.options} select={handleRotateRDegrees} selection={props.options[props.selection]} />
     </animated.div>
   );
 }

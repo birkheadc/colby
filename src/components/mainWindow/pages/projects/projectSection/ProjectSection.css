@@ -15,6 +15,10 @@ div.project-section-header {
   margin: 0 auto;
 }
 
+div.project-section-header>h2 {
+  color: var(--project-color);
+}
+
 div.project-section-header-links {
   display: flex;
   flex-direction: row;
@@ -59,7 +63,7 @@ div.project-description-wrapper {
   width: 400px;
   height: 400px;
   transform: scale(var(--nav-scale));
-  margin: 0.5em auto;
+  margin: 1.5em auto;
   display: grid;
   grid-template: 1fr / 1fr;
   place-items: center;
