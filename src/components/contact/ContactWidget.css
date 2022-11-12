@@ -1,17 +1,31 @@
-div.contact-widget-wrapper>h2 {
+div.contact-widget-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+div.contact-widget-wrapper h2 {
   font-size: 1.8em;
   color: var(--clr-accent-c);
+  text-align: center;
 }
 
 div.contact-widget-wrapper span {
   font-size:1.3em;
 }
 
-div.contact-widget-wrapper>ul { 
+div.contact-widget-wrapper ul { 
   display: flex;
   flex-direction: row;
   justify-content: center;
   gap: 1em;
+}
+
+div.contact-widget-mail-wrapper {
+  border-width: 1px 0;
+  border-style: solid;
+  padding: 0.5em 0.8em;
+  /* border-radius: 10px; */
 }
 
 div.contact-widget-mail-copy-wrapper {

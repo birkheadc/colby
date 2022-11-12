@@ -6,6 +6,7 @@ import MailIcon from './mailIcon/MailIcon';
 import fb_icon from '../../assets/images/social-icons/facebook.png';
 import gh_icon from '../../assets/images/social-icons/github.png';
 import li_icon from '../../assets/images/social-icons/linkedin.png';
+import { animated, useSpring } from 'react-spring';
 
 export interface IContactIcon {
   icon: JSX.Element,
@@ -36,17 +37,40 @@ function ContactWidget(props: IContactWidgetProps): JSX.Element {
     }
   ];
 
+  const [navButtonSpring, navButtonSpringApi] = useSpring(() => ({
+    from: { opacity: 0 }
+  }));
+
+  React.useEffect(() => {
+    console.log('test');
+    navButtonSpringApi.start({
+      from: {
+        opacity: 0
+      },
+      to: {
+        opacity: 1
+      },
+      config: {
+        duration: 300
+      }
+    })
+  });
+
   return (
-    <div className='nav-option-contents-wrapper contact-widget-wrapper'>
-      <h2>Contact Me</h2>
-      <ul>
-      {ICONS.map(
-        icon =>
-        <li key={'contact-icon_' + icon.key}><ContactIcon icon={icon} /></li>
-      )}
-      </ul>
-      <span>birkheadc@gmail.com</span>
-      <div className='contact-widget-mail-copy-wrapper'><MailIcon address='birkheadc@gmail.com'/><CopyIcon text='birkheadc@gmail.com'/></div>
+    <div className='nav-option-contents-wrapper'>
+      <animated.div className='contact-widget-wrapper' style={navButtonSpring}>
+        <h2>Contact Me</h2>
+        <ul>
+        {ICONS.map(
+          icon =>
+          <li key={'contact-icon_' + icon.key}><ContactIcon icon={icon} /></li>
+        )}
+        </ul>
+        <div className='contact-widget-mail-wrapper'>
+          <span>birkheadc@gmail.com</span>
+          <div className='contact-widget-mail-copy-wrapper'><MailIcon address='birkheadc@gmail.com'/><CopyIcon text='birkheadc@gmail.com'/></div>
+        </div>
+      </animated.div>
     </div>
   );
 }

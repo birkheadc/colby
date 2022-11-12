@@ -21,7 +21,7 @@ function BlogSection(props: IBlogSectionProps): JSX.Element {
       <h2>{props.blurb.title}</h2>
       {displaySubtitle()}
       <h4>{props.blurb.created.toString().substring(0, 10)}</h4>
-      <a href={Env.BLOG_URL + '/articles/' + props.blurb.id} target='_blank' rel='noreferrer'>Read Here</a>
+      <a draggable='false' href={Env.BLOG_URL + '/articles/' + props.blurb.id} target='_blank' rel='noreferrer'>Read Here</a>
     </div>
   );
 }

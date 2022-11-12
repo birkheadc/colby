@@ -12,10 +12,11 @@ interface INavGoButtonProps {
 function NavGoButton(props: INavGoButtonProps): JSX.Element {
 
   const [navButtonSpring, navButtonSpringApi] = useSpring(() => ({
-
+    from: { opacity: 0 }
   }));
 
   React.useEffect(() => {
+    console.log('test');
     navButtonSpringApi.start({
       from: {
         opacity: 0
@@ -24,10 +25,10 @@ function NavGoButton(props: INavGoButtonProps): JSX.Element {
         opacity: 1
       },
       config: {
-        duration: 150
+        duration: 300
       }
     })
-  }, []);
+  });
 
   return (
     <div className='nav-option-contents-wrapper'>

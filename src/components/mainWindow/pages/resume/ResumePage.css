@@ -21,6 +21,7 @@ div.resume-wrapper h5 {
 div.resume-wrapper p {
   text-align: justify;
   line-height: 120%;
+  font-size: 1.3em;
 }
 
 div.resume-pdf-link {
@@ -50,6 +51,7 @@ div.resume-body section>ul>li>ul {
 
 div.resume-body section>ul>li>ul>li {
   margin-left: 1em;
+  list-style-type: circle;
 }
 
 div.resume-body ul {

@@ -19,7 +19,7 @@ function ResumePage(props: IResumePageProps) {
           <p>
             American expat and small business manager looking to return home and change gears. Developed software for use
             in production and advertising. Quick and eager to learn new languages and frameworks, driven to apply best
-            practices and design clean code. Skilled at adapting to new and changing environments. Comfortable in many
+            practices and write clean code. Skilled at adapting to new and changing environments. Comfortable in many
             programming languages, as well as natural ones. Fully fluent in Japanese, conversationally fluent in Korean.
           </p>
 

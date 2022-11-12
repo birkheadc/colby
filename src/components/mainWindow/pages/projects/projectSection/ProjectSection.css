@@ -25,12 +25,6 @@ div.project-section-header-links {
   gap: 1em;
 }
 
-ul.project-section-technologies>li {
-  border-width: 1px 0 1px 0;
-  border-style: solid;
-  padding: 0.2em 0.2em;
-}
-
 p.project-section-short-description {
   text-align: justify;
   padding: 0 0.5em;
@@ -63,7 +57,7 @@ div.project-description-wrapper {
   width: 400px;
   height: 400px;
   transform: scale(var(--nav-scale));
-  margin: 1.5em auto;
+  margin: 5em auto;
   display: grid;
   grid-template: 1fr / 1fr;
   place-items: center;
@@ -78,7 +72,7 @@ div.project-description-wrapper>* {
   div.project-description-wrapper {
     width: 600px;
     height: 600px;
-    margin: 2.5em auto;
+    margin: 6em auto;
   }
 
   div.project-section-long-description-wrapper {
