@@ -31,7 +31,7 @@ function ResumePage(props: IResumePageProps) {
                 <h5>Spring 2013 — Spring 2017</h5>
                 <ul className='resume-body-list'>
                   <li>Bachelor of Arts in Linguistics</li>
-                  <li>Full-ride scholarship student</li>
+                  <li>Full-ride MEXT scholarship student</li>
                 </ul>
               </li>
             </ul>
@@ -44,8 +44,8 @@ function ResumePage(props: IResumePageProps) {
                 <h4>Retail Manager</h4>
                 <h5>Spring 2017 — Present</h5>
                 <ul className='resume-body-list'>
-                  <li>Foreign grocery store in South Korea</li>
-                  <li>Developed and maintained applications to assist with daily duties</li>
+                  <li>Managed a foreign grocery store in South Korea</li>
+                  <li>Developed and maintained applications to assist with daily duties, including a book-keeping application that now automates what used to be over 100 hours of work a year</li>
                 </ul>
               </li>
               <li>
@@ -53,6 +53,7 @@ function ResumePage(props: IResumePageProps) {
                 <h5>Fall 2016 — Spring 2017</h5>
                 <ul className='resume-body-list'>
                   <li>Part-time at convenience store in Nagoya, Japan</li>
+                  <li>Worked with proprietary software to make orders, manage inventory, and finalize sales</li>
                 </ul>
               </li>
               <li>
@@ -62,6 +63,28 @@ function ResumePage(props: IResumePageProps) {
                   <li>Sunlight Supply Inc. in Woodland WA, USA</li>
                   <li>Quality Control and Shift Second</li>
                   <li>Designed operation instructions for forming prototypes and first-run products</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Projects</h3>
+            <ul>
+              <li>
+                <h4>Book-keeper</h4>
+                <ul>
+                  <li>Full stack web application that facilitates recording and searching daily sales totals</li>
+                  <li>Greatly improves speed and accuracy of making records</li>
+                  <li> Automatically generates weekly / monthly totals and averages</li>
+                </ul>
+              </li>
+              <li>
+                <h4>My Homepage Suite</h4>
+                <ul>
+                  <li>Calls a number of custom APIs to automatically generate content</li>
+                  <li>Dynamically scales to fit mobile or desktop screens</li>
+                  <li>Fully animated through react-spring and css</li>
                 </ul>
               </li>
             </ul>
