@@ -17,23 +17,13 @@ div#root {
   height: 100%;
 }
 
-@keyframes linkHover {
-  from {
-    color: var(--clr-accent-c);
-  }
-  to {
-    color: var(--clr-accent-b);
-  }
-}
-
 a {
   color: var(--clr-accent-c);
+  transition: color 200ms;
 }
 
-a:hover, a:active {
-  animation-name: linkHover;
-  animation-duration: 0.5s;
-  animation-fill-mode: forwards;
+a:hover {
+  color: var(--clr-accent-b);
 }
 
 @media (max-width: 980px) {

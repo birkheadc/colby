@@ -7,10 +7,9 @@ button.slider-status-icon-wrapper {
   right: 0;
   cursor: pointer;
   color: var(--clr-accent-c);
+  transition: color 200ms;
 }
 
-button.slider-status-icon-wrapper:hover, button.slider-status-icon-wrapper:active {
-  animation-name: linkHover;
-  animation-duration: 0.5s;
-  animation-fill-mode: forwards;
+button.slider-status-icon-wrapper:hover {
+  color: var(--clr-accent-b);
 }

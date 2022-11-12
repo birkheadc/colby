@@ -7,24 +7,14 @@
   transform: scale(0.9);
 }
 
-@keyframes linkHover {
-  from {
-    color: var(--clr-accent-c);
-  }
-  to {
-    color: var(--clr-accent-b);
-  }
-}
-
 .mail-copy-link>button {
   height: 100%;
   width: 100%;
   cursor: pointer;
   color: var(--clr-accent-c);
+  transition: color 200ms;
 }
 
-.mail-copy-link>button:hover, .mail-copy-link>button:active {
-  animation-name: linkHover;
-  animation-duration: 0.5s;
-  animation-fill-mode: forwards;
+.mail-copy-link>button:hover {
+  color: var(--clr-accent-b);
 }

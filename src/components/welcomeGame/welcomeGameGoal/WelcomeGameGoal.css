@@ -3,7 +3,19 @@ div.welcome-game-goal {
   user-select: none;
 }
 
+@keyframes goalColorChange {
+  from {
+    color: var(--clr-text-a);
+    font-size: 1.8rem;
+  }
+  to {
+    color: var(--clr-accent-c);
+    font-size: 2.5rem;
+  }
+}
+
 div.goal-complete {
-  color: var(--clr-accent-c);
-  font-size: 2.5rem;
+  animation-name: goalColorChange;
+  animation-duration: 500ms;
+  animation-fill-mode: forwards;
 }

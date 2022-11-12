@@ -15,8 +15,6 @@ function NavWrapper(props: INavWrapperProps) {
   const navigate = useNavigate();
   const [isOpen, setOpen] = React.useState(false);
   const scrollDirection = useScrollDirection();
-  const [isHidden, setHidden] = React.useState(false);
-  let lastScroll = 0;
   const navAnimationStates = {
     closed: {
       backdropFilter: 'blur(0px)'
@@ -46,12 +44,6 @@ function NavWrapper(props: INavWrapperProps) {
     }
   };
 
-  const [navOpenButtonSpring, navOpenButtonSpringApi] = useSpring(() => ({
-    from: {
-      color: 'var(--clr-accent-c)',
-    }
-  }));
-
   const [navHideSpring, navHideSpringApi] = useSpring(() => ({
 
   }));
@@ -77,28 +69,6 @@ function NavWrapper(props: INavWrapperProps) {
       to: navAnimationStates.closed
     });
   };
-
-  const animateHoverOpenButton = (): void => {
-    navOpenButtonSpringApi.start({
-      from: {
-        color: 'var(--clr-accent-c)',
-      },
-      to: {
-        color: 'var(--clr-accent-b)',
-      }
-    });
-  }
-
-  const animateLeaveOpenButton = (): void => {
-    navOpenButtonSpringApi.start({
-      from: {
-        color: 'var(--clr-accent-b)',
-      },
-      to: {
-        color: 'var(--clr-accent-c)',
-      }
-    });
-  }
 
   function animateHideNav(): void {
     navHideSpringApi.start({
@@ -141,7 +111,6 @@ function NavWrapper(props: INavWrapperProps) {
     }
     else {
       animateCloseNav();
-      animateLeaveOpenButton();
     }
   }, [isOpen]);
 
@@ -172,7 +141,7 @@ function NavWrapper(props: INavWrapperProps) {
       );
     }
     return (
-      <animated.button className='nav-open-button' onClick={() => setOpen(true)} onPointerEnter={animateHoverOpenButton} onPointerLeave={animateLeaveOpenButton} style={{...navHideSpring, ...navOpenButtonSpring}}><Bars3Icon /></animated.button>
+      <animated.button className='nav-open-button' onClick={() => setOpen(true)} style={navHideSpring}><Bars3Icon /></animated.button>
     );
   }
 

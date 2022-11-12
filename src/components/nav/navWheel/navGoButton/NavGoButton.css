@@ -14,16 +14,20 @@ div.nav-option-contents-wrapper {
 button.nav-go-button {
   border-width: 3px;
   border-style: solid;
-  /* border-color: var(--clr-accent-c); */
-  /* color: var(--clr-accent-c); */
+  color: var(--clr-accent-c);
   width: 50%;
   height: 25%;
-  /* border-radius: 10px; */
   text-align: center;
   cursor: pointer;
   z-index: 3;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-family: var(--font-h);
+  transition: color 250ms linear, font-size 250ms linear;
+}
+
+button.nav-go-button:hover {
+  font-size: 2rem;
+  color: var(--clr-accent-b);
 }
 
 button.nav-go-button:active {

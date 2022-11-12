@@ -19,10 +19,9 @@ function App(props: IAppProps): JSX.Element  {
   function calculateNavScale(): number {
     const hWidth = window.innerWidth / 2;
     const hHeight = window.innerHeight / 2;
-    const MAX_WIDTH = 400;
     const SCALE = 0.003;
 
-    return SCALE * Math.min(hWidth, hHeight, MAX_WIDTH);
+    return SCALE * Math.min(hWidth, hHeight);
   }
 
   React.useEffect(() => {

@@ -1,6 +1,10 @@
 div.contact-widget-wrapper>h2 {
-  font-size: 1.6em;
+  font-size: 1.8em;
   color: var(--clr-accent-c);
+}
+
+div.contact-widget-wrapper span {
+  font-size:1.3em;
 }
 
 div.contact-widget-wrapper>ul { 
@@ -15,4 +19,10 @@ div.contact-widget-mail-copy-wrapper {
   flex-direction: row;
   justify-content: center;
   gap: 1em;
+}
+
+@media (max-width: 980px) {
+  div.contact-widget-wrapper span {
+    font-size: 1.5em;
+  }
 }

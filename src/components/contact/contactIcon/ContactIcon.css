@@ -11,9 +11,10 @@
   background-color: var(--clr-accent-a);
   border-color: var(--clr-accent-a);
   border-width: 1px;
+  transition: background-color 200ms, border-color 200ms;
 }
 
-.icon-link:hover>img, .icon-link:active>img {
+.icon-link:hover>img {
   background-color: var(--clr-accent-b);
   border-color: var(--clr-accent-b);
 }

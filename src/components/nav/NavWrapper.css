@@ -25,6 +25,11 @@ button.nav-open-button {
   cursor: pointer;
   width: 1.8rem;
   pointer-events: all;
+  transition: color 200ms;
+}
+
+button.nav-open-button:hover {
+  color: var(--clr-accent-b);
 }
 
 @media (max-width: 80rem) {
