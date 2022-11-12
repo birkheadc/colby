@@ -45,14 +45,8 @@ function NavIcons(props: INavIconsProps): JSX.Element {
   const handlePointerUp = (e: PointerEvent, startSpace: { x: number, y: number}, startTime: number, degrees: number): void => {
     const deltaTime: number = Math.abs(+new Date() - startTime);
     const deltaSpace: { x: number, y: number } = { x: Math.abs(startSpace.x - e.clientX), y: Math.abs(startSpace.y - e.clientY) };
-    console.log('DeltaTime: ', deltaTime);
-    console.log('DeltaSpace', deltaSpace)
     if (deltaTime <= MAXIMUM_DELTA_TIME && deltaSpace.x <= MAXIMUM_DELTA_SPACE && deltaSpace.y <= MAXIMUM_DELTA_SPACE) {
-      console.log('Within range, rotating!');
       props.select(degrees);
-    }
-    else {
-      console.log('Out of range, no action.');
     }
     window.removeEventListener('pointerup', () => handlePointerUp(e, startSpace, startTime, degrees));
   }

@@ -17,6 +17,7 @@ function ProjectsPage(props: IProjectsPageProps) {
     <div className='main-content-wrapper'>
       <div className='projects-wrapper'>
         <h1>Projects</h1>
+        <a href='https://github.com/birkheadc?tab=repositories' target='_blank' rel='noreferrer'>Visit My Github</a>
         <Slider interval={5000}>
           {props.projects.map(
             project =>

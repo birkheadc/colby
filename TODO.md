@@ -1,4 +1,4 @@
 # TODO
 
   - Build About page
-  - Look into different fonts, esp. for headers / links / buttons
+  - Introduce CSS transitions in place of some of the button animations

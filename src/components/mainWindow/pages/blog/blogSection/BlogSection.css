@@ -6,3 +6,7 @@ div.blog-section-wrapper {
   gap: 1em;
   text-align: center;
 }
+
+div.blog-section-wrapper h3 {
+  font-family: var(--font-primary);
+}
