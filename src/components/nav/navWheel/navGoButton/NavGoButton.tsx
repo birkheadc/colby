@@ -16,7 +16,6 @@ function NavGoButton(props: INavGoButtonProps): JSX.Element {
   }));
 
   React.useEffect(() => {
-    console.log('test');
     navButtonSpringApi.start({
       from: {
         opacity: 0
