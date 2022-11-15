@@ -10,3 +10,8 @@ div.blog-section-wrapper {
 div.blog-section-wrapper h3 {
   font-family: var(--font-primary);
 }
+
+div.blog-section-wrapper a {
+  width: fit-content;
+  margin: 0 auto;
+}

@@ -3,3 +3,13 @@ div.about-wrapper {
   margin: 0 auto;
   padding: 1.5em 0;
 }
+
+@media (max-width: 980px) {
+  div.about-wrapper {
+    width: 90%;
+  }
+
+  div.about-wrapper>div {
+    padding: 1em 0;
+  }
+}

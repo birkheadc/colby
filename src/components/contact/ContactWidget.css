@@ -8,6 +8,11 @@ div.contact-widget-wrapper h2 {
   font-size: 1.8em;
   color: var(--clr-accent-c);
   text-align: center;
+  border-style: solid;
+  border-width: 0 0 2px 0;
+  width: 100%;
+  padding: 0.2em 0;
+  margin: 0 auto;
 }
 
 div.contact-widget-wrapper span {
