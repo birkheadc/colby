@@ -36,7 +36,8 @@ const SHORT_CONTENT: IAboutSectionData[] = [
   {
     image: <img src={image01}></img>,
     text: [
-      "The deeper I delved into the world of software, though, the more I began to realize: this is what I've always wanted to do."
+      "The deeper I delved into the world of software, though, the more I began to realize: this is what I've always wanted to do.",
+      "And so I"
     ]
   },
 ];
