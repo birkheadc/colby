@@ -1,3 +1,8 @@
+@keyframes fadeIn {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+
 div.nav-wheel {
   border-radius: 50%;
   width: 100%;
@@ -9,6 +14,9 @@ div.nav-wheel {
 
   background: radial-gradient(var(--clr-bg-a), rgba(0, 0, 0, 0.5));
   pointer-events: all;
+
+  /* animation-name: fadeIn;
+  animation-duration: 200ms; */
 }
 
 div.nav-wheel>* {

@@ -2,6 +2,7 @@ import * as React from 'react';
 import './AboutPage.css'
 import AboutSection from './aboutSection/AboutSection';
 import ABOUT_CONTENT, { IAboutSectionData } from './aboutSection/aboutContent/AboutPageContent';
+import ContactWidget from '../../../contact/ContactWidget';
 
 interface IAboutPageProps {
 
@@ -53,6 +54,9 @@ function AboutPage(props: IAboutPageProps) {
           )}
         </div>
       </div>
+      <div className='about-contacts-wrapper'>
+          <ContactWidget />
+        </div>
     </div>
   );
 }

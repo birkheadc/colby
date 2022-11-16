@@ -13,6 +13,7 @@ interface INavWrapperProps {
 function NavWrapper(props: INavWrapperProps) {
 
   const navigate = useNavigate();
+  const [isHidden, setHidden] = React.useState(false);
   const [isOpen, setOpen] = React.useState(false);
   const scrollDirection = useScrollDirection();
   const navAnimationStates = {
@@ -29,18 +30,20 @@ function NavWrapper(props: INavWrapperProps) {
   }));
   const navWrapperAnimationStates = {
     closed: {
-      transform: 'translate(0%, 0%) scale(var(--nav-scale))',
-      width: 75,
-      height: 75,
+      transform: 'translate(0%, 0%)',
+      width: 'min(5vh, 8vw)',
+      height: 'min(5vh, 8vw)',
       top: '1%',
-      right: '2%'
+      right: '2%',
+      transition: 'top 200ms linear, right 200ms linear'
     },
     open: {
-      transform: 'translate(50%, -50%) scale(var(--nav-scale))',
-      width: 500,
-      height: 500,
+      transform: 'translate(50%, -50%)',
+      width: 'min(80vh, 80vw)',
+      height: 'min(80vh, 80vw)',
       top: '50%',
-      right: '50%'
+      right: '50%',
+      transition: 'width 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275), height 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275), top 200ms linear, right 200ms linear'
     }
   };
 
@@ -70,39 +73,8 @@ function NavWrapper(props: INavWrapperProps) {
     });
   };
 
-  function animateHideNav(): void {
-    navHideSpringApi.start({
-      from: {
-        transform: 'translate(0vh, 0vh)'
-      },
-      to: {
-        transform: 'translate(0vh, -20vh)'
-      },
-      config: {
-        mass: 5,
-        tension: 100,
-        clamp: true
-      }
-    });
-  }
-
-  function animateShowNav(): void {
-    navHideSpringApi.start({
-      from: {
-        transform: 'translate(0vh, -20vh)'
-      },
-      to: {
-        transform: 'translate(0vh, 0vh)'
-      },
-      config: {
-        tension: 500,
-        clamp: true
-      }
-    });
-  }
-
   React.useEffect(() => {
-    scrollDirection === "down" ? animateHideNav() : animateShowNav();
+    scrollDirection === "down" ? setHidden(true) : setHidden(false);
   }, [scrollDirection])
 
   React.useEffect(() => {
@@ -141,16 +113,16 @@ function NavWrapper(props: INavWrapperProps) {
       );
     }
     return (
-      <animated.button className='nav-open-button' onClick={() => setOpen(true)} style={navHideSpring}><Bars3Icon /></animated.button>
+      <button className='nav-open-button' onClick={() => setOpen(true)} style={{ transform: isHidden ? 'translate(0vh, -20vh)' : 'translate(0vh, 0vh)' }}><Bars3Icon /></button>
     );
   }
 
   return (
-    <animated.nav style={navSpring}>
-      <animated.div className='nav-wrapper' style={navWrapperSpring}>
+    <nav>
+      <div className='nav-wrapper' style={isOpen ? navWrapperAnimationStates.open : navWrapperAnimationStates.closed}>
         {generateNavContents()}
-      </animated.div>
-    </animated.nav>
+      </div>
+    </nav>
   );
 }
 

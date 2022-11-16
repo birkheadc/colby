@@ -130,8 +130,8 @@ function WelcomeGameStar(props: IWelcomeGameStarProps): JSX.Element {
   }
 
   return (
-    <div className='welcome-game-star-wrapper' style={{transform: 'translate(' + initialPosition.x + 'px, ' + initialPosition.y + 'px) scale(var(--nav-scale))'}}>
-      <Draggable disabled={complete} position={position} onStart={() => setDragging(true)} onDrag={dragHandler} onStop={dragStopHandler} scale={parseFloat(document.documentElement.style.getPropertyValue('--nav-scale'))}>
+    <div className='welcome-game-star-wrapper' style={{transform: 'translate(' + initialPosition.x + 'px, ' + initialPosition.y + 'px)'}}>
+      <Draggable disabled={complete} position={position} onStart={() => setDragging(true)} onDrag={dragHandler} onStop={dragStopHandler} >
         <div className='welcome-game-star' id={'welcome-game-star_' + props.word.index} style={complete ? styles.disabled : (dragging ? styles.dragging : styles.notDragging) }>
           <animated.div style={ dragging ? { } : textSpring}>{props.word.word}</animated.div>
           <animated.div style={dragging ? { transform: 'scale(0.5)', opacity: 0 } : { transform: 'scale(0.5)', ...starSpring}}>

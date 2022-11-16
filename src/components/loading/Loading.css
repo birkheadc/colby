@@ -2,7 +2,6 @@ div.loading-wrapper {
   --size: 250px;
   width: var(--size);
   height: 100%;
-  transform: scale(var(--nav-scale));
   margin: auto;
   display: flex;
   justify-content: center;

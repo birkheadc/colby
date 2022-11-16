@@ -1,13 +1,13 @@
 div.nav-icon-wrapper {
   position: absolute;
   height: 100%;
-  width: 3rem;
-  padding-top: 1.5rem;
+  width: 10%;
+  padding-top: 5%;
   pointer-events: none;
 }
 
 div.nav-icon-wrapper>button {
-  width: 3rem;
+  width: 100%;
   z-index: 1;
   pointer-events: all;
   cursor: pointer;

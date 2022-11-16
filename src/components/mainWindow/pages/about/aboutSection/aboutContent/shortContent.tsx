@@ -28,16 +28,16 @@ const SHORT_CONTENT: IAboutSectionData[] = [
   {
     image: <img src={image01}></img>,
     text: [
-      "Over the past six years, I've been fortunate to have a lot of free time to devote to my interests.",
-      "Chief among them is programming. I've been programming in one form or another for most of my life.",
-      "But one thing or another always precluded me from considering it as a career."
+      "In the meantime, I've gotten back into programming. It's something I've done in one form or another most of my life, but had fallen out of habit recently.",
+      "My goal is to head back home and start work as a junior developer sometime soon."
     ]
   },
   {
     image: <img src={image01}></img>,
     text: [
-      "The deeper I delved into the world of software, though, the more I began to realize: this is what I've always wanted to do.",
-      "And so I"
+      "So please, check out the rest of my site, browse my listed projects.",
+      "If you want to contact me, feel free to connect with me at one of my socials, or send me an email.",
+      "Thanks for reading."
     ]
   },
 ];

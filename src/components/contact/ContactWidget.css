@@ -2,6 +2,8 @@ div.contact-widget-wrapper {
   display: flex;
   flex-direction: column;
   gap: 1em;
+  text-align: center;
+  font-size: min(2.5vw, 2.5vh);
 }
 
 div.contact-widget-wrapper h2 {

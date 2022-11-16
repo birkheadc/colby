@@ -20,13 +20,13 @@ button.nav-go-button {
   text-align: center;
   cursor: pointer;
   z-index: 3;
-  font-size: 1.5rem;
+  font-size: min(4vw, 4vh);
   font-family: var(--font-h);
   transition: color 250ms linear, font-size 250ms linear;
 }
 
 button.nav-go-button:hover {
-  font-size: 2rem;
+  font-size: min(5vw, 5vh);
   color: var(--clr-accent-b);
 }
 
@@ -38,5 +38,5 @@ div.nav-option-contents-wrapper>p {
   width: 75%;
   height: 15%;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: min(4vw, 4vh);
 }

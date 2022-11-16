@@ -2,6 +2,7 @@ div.welcome-game-wrapper {
   position: absolute;
   inset: 0%;
   overscroll-behavior: none;
+  font-size: min(3vw, 3vh);
 }
 
 div.welcome-game-spawner {
@@ -14,5 +15,5 @@ p.welcome-game-hint {
   top: 2%;
   width: 100%;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1em;
 }

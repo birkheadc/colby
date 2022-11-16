@@ -9,7 +9,7 @@ div.welcome-game-goals-wrapper {
   width: 500px;
   height: 500px;
 
-  transform: translate(-50%, -50%) scale(var(--nav-scale));
+  transform: translate(-50%, -50%);
 
   display: flex;
   flex-direction: row;

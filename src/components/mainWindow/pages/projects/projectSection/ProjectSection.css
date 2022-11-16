@@ -56,7 +56,6 @@ div.project-description-wrapper {
   border-radius: 50%;
   width: 400px;
   height: 400px;
-  transform: scale(var(--nav-scale));
   margin: 5em auto;
   display: grid;
   grid-template: 1fr / 1fr;

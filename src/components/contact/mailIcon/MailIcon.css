@@ -1,6 +1,6 @@
 .mail-copy-link {
-  width: 30px;
-  height: 30px;
+  width: 1.3em;
+  height: 1.3em;
 }
 
 .mail-copy-link:active {
@@ -17,4 +17,11 @@
 
 .mail-copy-link>button:hover {
   color: var(--clr-accent-b);
+}
+
+@media (max-width:980px) {
+  .mail-copy-link {
+    width: 1.5em;
+    height: 1.5em;
+  }
 }

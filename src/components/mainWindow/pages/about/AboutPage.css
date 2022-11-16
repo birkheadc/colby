@@ -4,6 +4,18 @@ div.about-wrapper {
   padding: 1.5em 0;
 }
 
+div.about-contacts-wrapper {
+  margin: 0 auto 200px auto;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  border: var(--border-nav-a);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (max-width: 980px) {
   div.about-wrapper {
     width: 90%;

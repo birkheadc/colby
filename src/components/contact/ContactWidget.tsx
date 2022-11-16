@@ -57,21 +57,19 @@ function ContactWidget(props: IContactWidgetProps): JSX.Element {
   });
 
   return (
-    <div className='nav-option-contents-wrapper'>
-      <animated.div className='contact-widget-wrapper' style={navButtonSpring}>
-        <h2>Contact Me</h2>
-        <ul>
-        {ICONS.map(
-          icon =>
-          <li key={'contact-icon_' + icon.key}><ContactIcon icon={icon} /></li>
-        )}
-        </ul>
-        <div className='contact-widget-mail-wrapper'>
-          <span>birkheadc@gmail.com</span>
-          <div className='contact-widget-mail-copy-wrapper'><MailIcon address='birkheadc@gmail.com'/><CopyIcon text='birkheadc@gmail.com'/></div>
-        </div>
-      </animated.div>
-    </div>
+    <animated.div className='contact-widget-wrapper' style={navButtonSpring}>
+      <h2>Contact Me</h2>
+      <ul>
+      {ICONS.map(
+        icon =>
+        <li key={'contact-icon_' + icon.key}><ContactIcon icon={icon} /></li>
+      )}
+      </ul>
+      <div className='contact-widget-mail-wrapper'>
+        <span>birkheadc@gmail.com</span>
+        <div className='contact-widget-mail-copy-wrapper'><MailIcon address='birkheadc@gmail.com'/><CopyIcon text='birkheadc@gmail.com'/></div>
+      </div>
+    </animated.div>
   );
 }
 

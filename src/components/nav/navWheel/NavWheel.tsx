@@ -49,34 +49,10 @@ function NavWheel(props: INavWheelProps): JSX.Element {
     {
       icon: <EnvelopeIcon key='5'/>,
       title: 'Contact',
-      contents: <ContactWidget />,
+      contents: <div className='nav-option-contents-wrapper'><ContactWidget /></div>,
       to: '/contact'
-    },
-    // {
-    //   icon: <RectangleStackIcon key='6'/>,
-    //   title: 'Sandbox',
-    //   contents: <NavGoButton navigate={() => props.navigate('/sandbox')} description={'Where stray widgets gather and play'} title={'Sandbox'}/>,
-    //   to: '/sandbox'
-    // },
-  ];
-
-  const ROTATION_INCREMENT: number = 360 / NAV_OPTIONS.length;
-
-  const navWheelSpring = useSpring({
-    from: {
-      opacity: 0
-    },
-    to: {
-      opacity: 1
-    },
-    config: {
-      duration: 1000
     }
-  });
-
-  const [navButtonSpring, navButtonSpringApi] = useSpring(() => ({
-    
-  }));
+  ];
 
   const location = useLocation();
 
@@ -88,10 +64,10 @@ function NavWheel(props: INavWheelProps): JSX.Element {
   }
 
   return (
-    <animated.div className='nav-wheel' style={navWheelSpring}>
+    <div className='nav-wheel'>
       <NavRing selection={NAV_OPTIONS.findIndex(o => o.title === currentSelection.title)} options={NAV_OPTIONS} select={(selection: INavOption) => {setCurrentSelection(selection)}} />
         {currentSelection.contents}
-    </animated.div>
+    </div>
   );
 }
 
