@@ -48,10 +48,10 @@ function AboutPage(props: IAboutPageProps) {
             <AboutSection key={'about-section_' + index} image={section.image} imageGoesLeft={index % 2 === 0 ? true : false} isActive={index === current} text={section.text}/>
           )}
         </div>
-      </div>
-      <div className='about-contacts-wrapper'>
+        <div className='about-contacts-wrapper'>
           <ContactWidget />
         </div>
+      </div>
     </div>
   );
 }

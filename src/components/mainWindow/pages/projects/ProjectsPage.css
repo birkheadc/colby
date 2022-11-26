@@ -17,4 +17,12 @@ div.projects-wrapper>a {
   div.projects-wrapper {
     width: 90vw;
   }
+
+  div.projects-wrapper a {
+    font-size: 1.5em;
+  }
+
+  div.projects-wrapper p {
+    font-size: 1.5em;
+  }
 }

@@ -24,3 +24,9 @@ div.welcome-page-wrapper {
 .welcome-page-skip-link:hover {
   color: var(--clr-accent-b);
 }
+
+@media (max-width: 980px) {
+  .welcome-page-skip-link {
+    font-size: 2rem;
+  }
+}

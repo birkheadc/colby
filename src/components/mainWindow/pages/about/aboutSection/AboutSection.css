@@ -57,6 +57,7 @@ div.about-text-wrapper>div {
   section.about-section {
     margin: 300px 0;
     height: 750px;
+    font-size: 1.25em;
   }
 
   section.about-section>div {

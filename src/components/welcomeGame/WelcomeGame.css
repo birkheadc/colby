@@ -17,3 +17,9 @@ p.welcome-game-hint {
   text-align: center;
   font-size: 1em;
 }
+
+@media (max-width: 980px) {
+  p.welcome-game-hint {
+    font-size: 1.5em;
+  }
+}

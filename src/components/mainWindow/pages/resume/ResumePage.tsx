@@ -11,7 +11,7 @@ function ResumePage(props: IResumePageProps) {
       <div className='resume-wrapper'>
         <h1>Resume</h1>
         <div className='resume-pdf-link'>
-          <a href='/resume/resume_en_swe.pdf' target='_blank' rel='noreferrer'>View Printable PDF</a>
+          <a href='https://resume.birkheadc.me/resume_en_swe.pdf' target='_blank' rel='noreferrer'>View Printable PDF</a>
         </div>
         <div className='resume-body'>
 
