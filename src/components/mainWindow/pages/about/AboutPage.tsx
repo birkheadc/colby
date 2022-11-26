@@ -20,17 +20,12 @@ function AboutPage(props: IAboutPageProps) {
     const max = wrapper.clientHeight - window.innerHeight;
     const increment =  max / ((SECTIONS.length - 1) * 3);
     let section = Math.floor(window.scrollY / increment);
-    // console.log('Section: ', section, '(section - 1) % 3)', (section - 1) % 3);
     if (((section - 1) % 3) === 0) {
       setCurrent(-1);
       return;
     }
     setCurrent(Math.ceil(section / 3));
   }
-
-  React.useEffect(() => {
-    console.log(current);
-  }, [current]);
 
   React.useEffect(() => {
     window.addEventListener('scroll', () => calculateCurrentByScroll(window.scrollY));

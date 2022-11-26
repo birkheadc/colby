@@ -24,7 +24,7 @@ function NavGoButton(props: INavGoButtonProps): JSX.Element {
         opacity: 1
       },
       config: {
-        duration: 300
+        duration: 500
       }
     })
   });

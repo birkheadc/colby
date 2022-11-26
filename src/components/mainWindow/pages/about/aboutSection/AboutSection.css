@@ -8,13 +8,11 @@ section.about-section {
 
 section.about-section-active>div.about-goes-left {
   transform: translate(-45%, 5%);
-  transition: transform 500ms;
   transition-timing-function:cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 section.about-section-active>div.about-goes-right {
   transform: translate(45%, -5%);
-  transition: transform 500ms;
   transition-timing-function:cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -32,10 +30,12 @@ section.about-section>div {
 
 div.about-image-wrapper {
   z-index: 1;
+  display: flex;
+  justify-content: center;
 }
 
 div.about-image-wrapper>img {
-  width: 100%;
+  width: auto;
   height: 100%;
 }
 
@@ -48,7 +48,8 @@ div.about-text-wrapper>div {
   inset: 16%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  gap: 2em;
+  justify-content: center;
   text-align: center;
 }
 

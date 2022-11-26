@@ -15,6 +15,10 @@ function NavWrapper(props: INavWrapperProps) {
   const navigate = useNavigate();
   const [isHidden, setHidden] = React.useState(false);
   const [isOpen, setOpen] = React.useState(false);
+  // Contents refers to what to show in the wrapper.
+  // If the nav 'inOpen', show the 'nav', else, show 'button'.
+  // We use a separate state from 'isOpen' in order to delay changing the contents.
+  const [contents, setContents] = React.useState('button');
   const scrollDirection = useScrollDirection();
   const navAnimationStates = {
     closed: {
@@ -30,20 +34,16 @@ function NavWrapper(props: INavWrapperProps) {
   }));
   const navWrapperAnimationStates = {
     closed: {
-      transform: 'translate(0%, 0%)',
-      width: 'min(5vh, 8vw)',
-      height: 'min(5vh, 8vw)',
-      top: '1%',
-      right: '2%',
-      transition: 'top 200ms linear, right 200ms linear'
+      transform: 'translate(50%, -50%) scale(7%)',
+      top: '5%',
+      right: '5%',
+      transition: 'top 300ms cubic-bezier(0.39, 0.575, 0.565, 1) 100ms, right 300ms cubic-bezier(0.39, 0.575, 0.565, 1) 100ms, transform 300ms cubic-bezier(0.39, 0.575, 0.565, 1) 0ms'
     },
     open: {
-      transform: 'translate(50%, -50%)',
-      width: 'min(80vh, 80vw)',
-      height: 'min(80vh, 80vw)',
+      transform: 'translate(50%, -50%) scale(100%)',
       top: '50%',
       right: '50%',
-      transition: 'width 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275), height 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275), top 200ms linear, right 200ms linear'
+      transition: 'top 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275) 0ms, right 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275) 0ms, transform 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275) 200ms'
     }
   };
 
@@ -80,9 +80,13 @@ function NavWrapper(props: INavWrapperProps) {
   React.useEffect(() => {
     if (isOpen) {
       animateOpenNav();
+      setContents('nav')
     }
     else {
       animateCloseNav();
+      setTimeout(() => {
+        if (isOpen === false) setContents('button')
+      }, 300)
     }
   }, [isOpen]);
 
@@ -107,13 +111,13 @@ function NavWrapper(props: INavWrapperProps) {
   }
 
   function generateNavContents(): JSX.Element {
-    if (isOpen) {
+    if (contents === 'nav') {
       return (
         <NavWheel navigate={handleNavigate}/>
       );
     }
     return (
-      <button className='nav-open-button' onClick={() => setOpen(true)} style={{ transform: isHidden ? 'translate(0vh, -20vh)' : 'translate(0vh, 0vh)' }}><Bars3Icon /></button>
+      <button className='nav-open-button' onClick={() => setOpen(true)} style={{ transform: isHidden ? 'translate(0vh, -200vh)' : 'translate(0vh, 0vh)' }}><Bars3Icon /></button>
     );
   }
 

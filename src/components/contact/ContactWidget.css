@@ -1,9 +1,17 @@
+@keyframes fadeIn {
+  from { opacity: 0;}
+  to { opacity: 1;}
+}
+
 div.contact-widget-wrapper {
   display: flex;
   flex-direction: column;
   gap: 1em;
   text-align: center;
   font-size: min(2.5vw, 2.5vh);
+  animation-name: fadeIn;
+  animation-duration: 1000ms;
+  animation-fill-mode: forwards;
 }
 
 div.contact-widget-wrapper h2 {

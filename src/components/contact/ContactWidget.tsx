@@ -15,7 +15,7 @@ export interface IContactIcon {
 }
 
 interface IContactWidgetProps {
-
+  
 }
 
 function ContactWidget(props: IContactWidgetProps): JSX.Element {
@@ -37,27 +37,8 @@ function ContactWidget(props: IContactWidgetProps): JSX.Element {
     }
   ];
 
-  const [navButtonSpring, navButtonSpringApi] = useSpring(() => ({
-    from: { opacity: 0 }
-  }));
-
-  React.useEffect(() => {
-    console.log('test');
-    navButtonSpringApi.start({
-      from: {
-        opacity: 0
-      },
-      to: {
-        opacity: 1
-      },
-      config: {
-        duration: 300
-      }
-    })
-  });
-
   return (
-    <animated.div className='contact-widget-wrapper' style={navButtonSpring}>
+    <div className='contact-widget-wrapper'>
       <h2>Contact Me</h2>
       <ul>
       {ICONS.map(
@@ -69,7 +50,7 @@ function ContactWidget(props: IContactWidgetProps): JSX.Element {
         <span>birkheadc@gmail.com</span>
         <div className='contact-widget-mail-copy-wrapper'><MailIcon address='birkheadc@gmail.com'/><CopyIcon text='birkheadc@gmail.com'/></div>
       </div>
-    </animated.div>
+    </div>
   );
 }
 

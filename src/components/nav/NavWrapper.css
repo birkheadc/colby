@@ -14,6 +14,9 @@ div.nav-wrapper {
   display: grid;
   grid-template: 1fr / 1fr;
   place-items: center;
+  width: min(80vw, 80vh);
+  height: min(80vw, 80vh);
+  transform: translate(50%, -50%);
 }
 
 div.nav-wrapper>* {
@@ -34,10 +37,4 @@ button.nav-open-button {
 
 button.nav-open-button:hover {
   color: var(--clr-accent-b);
-}
-
-@media (max-width: 980px) {
-  button.nav-open-button {
-    /* width: 3rem; */
-  }
 }
