@@ -1,24 +1,14 @@
 footer {
-  background-color: red;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 0em;
+  gap: 2em;
   height: 4em;
   width: fit-content;
   margin: 0 auto;
   padding: 1em 2em;
   border-top: 1px solid var(--clr-accent-c);
-  /* background-color: red; */
-}
-
-footer>ul {
-  display: flex;
-  flex-direction: row;
-  gap: 1em;
-  /* background-color: blue; */
-  height: 100%;
 }
 
 footer>div {

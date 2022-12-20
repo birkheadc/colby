@@ -1,0 +1,15 @@
+.contact-icons-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  height: 100%;
+  width: auto;
+  text-align: center;
+}
+
+.contact-icons-list>li {
+  height: 100%;
+  display: flex;
+}

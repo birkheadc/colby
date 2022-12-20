@@ -8,7 +8,7 @@ interface IContactIconProps {
 }
 function ContactIcon(props: IContactIconProps): JSX.Element {
   return (
-    <a className='icon-link' draggable='false' href={props.icon.url} target='_blank' rel='noreferrer'>{props.icon.icon}</a>
+    <a className='icon-link' draggable='false' href={props.icon.url} target='_blank' rel='noreferrer'><img alt={props.icon.alt} draggable='false' src={props.icon.src}></img></a>
   );
 }
 

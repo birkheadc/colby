@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './ContactIcons.css';
 import ContactIcon from './contactIcon/ContactIcon';
 import { IContactIcon } from './ContactWidget';
 import fb_icon from '../../assets/images/social-icons/facebook.png';
@@ -13,23 +14,26 @@ function ContactIcons(props: IContactIconsProps): JSX.Element {
 
   const ICONS: IContactIcon[] = [
     {
-      icon: <img alt='My Facebook' draggable='false' src={fb_icon}></img>,
+      alt: 'My Facebook',
+      src: fb_icon,
       url: 'https://www.facebook.com/#!/profile.php?id=100000139877934',
       key: 0
     },
     {
-      icon: <img alt='My Github' draggable='false' src={gh_icon}></img>,
+      alt: 'My Github',
+      src: gh_icon,
       url: 'https://github.com/birkheadc',
       key: 1
     },{
-      icon: <img alt='My LinkedIn' draggable='false' src={li_icon}></img>,
+      alt: 'My LinkedIn',
+      src: li_icon,
       url: 'https://www.linkedin.com/in/colby-birkhead',
       key: 2
     }
   ];
   
   return (
-    <ul>
+    <ul className='contact-icons-list'>
       {ICONS.map(
         icon =>
         <li key={'contact-icon_' + icon.key}><ContactIcon icon={icon} /></li>

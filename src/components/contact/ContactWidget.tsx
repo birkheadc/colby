@@ -2,11 +2,11 @@ import * as React from 'react';
 import './ContactWidget.css';
 import CopyIcon from './copyIcon/CopyIcon';
 import MailIcon from './mailIcon/MailIcon';
-import { animated, useSpring } from 'react-spring';
 import ContactIcons from './ContactIcons';
 
 export interface IContactIcon {
-  icon: JSX.Element,
+  alt: string,
+  src: string,
   url: string,
   key: number
 }
