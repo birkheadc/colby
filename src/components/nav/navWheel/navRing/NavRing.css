@@ -8,5 +8,7 @@ div.nav-ring {
   cursor: pointer;
   z-index: 1;
 
-  border: var(--border-nav-a);;
+  border: var(--border-nav-a);
+
+  background-color: red;
 }

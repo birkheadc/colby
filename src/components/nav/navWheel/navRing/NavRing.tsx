@@ -99,18 +99,19 @@ function NavRing(props: INavRingProps): JSX.Element {
   }
 
   const handleBeginRotate = (e: React.MouseEvent): void => {
+    window.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
+    e.preventDefault();
     prevRotation = rotation;
     const angle = calculateAngleFromScreenCenterToCursor(e.clientX, e.clientY);
     startAngle = angle - rotation;
 
-    window.addEventListener('pointermove', handleRotate);
+    window.addEventListener('pointermove', handleRotate, {passive: false});
     window.addEventListener('pointerup', handleStopRotate);
 
     document.body.style.setProperty('overscroll-behavior', 'none');
   }
 
   const handleRotate = (e: PointerEvent): void => {
-    e.stopPropagation();
     setRotating(true);
     const angle = calculateAngleFromScreenCenterToCursor(e.clientX, e.clientY);
     let target = angle - startAngle;
