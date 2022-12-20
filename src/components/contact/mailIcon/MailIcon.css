@@ -1,22 +1,9 @@
 .mail-copy-link {
-  width: 1.3em;
-  height: 1.3em;
+  width: 100%;
 }
 
 .mail-copy-link:active {
   transform: scale(0.9);
-}
-
-.mail-copy-link>button {
-  height: 100%;
-  width: 100%;
-  cursor: pointer;
-  color: var(--clr-accent-c);
-  transition: color 200ms;
-}
-
-.mail-copy-link>button:hover {
-  color: var(--clr-accent-b);
 }
 
 @media (max-width:980px) {

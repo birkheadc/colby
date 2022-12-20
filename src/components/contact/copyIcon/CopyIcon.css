@@ -1,0 +1,11 @@
+.mail-copy-link>button {
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  color: var(--clr-accent-c);
+  transition: color 200ms;
+}
+
+.mail-copy-link>button:hover {
+  color: var(--clr-accent-b);
+}

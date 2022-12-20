@@ -14,6 +14,10 @@ div.contact-widget-wrapper {
   animation-fill-mode: forwards;
 }
 
+div.contact-widget-wrapper>ul {
+  height: 2.5em;
+}
+
 div.contact-widget-wrapper h2 {
   font-size: 1.8em;
   color: var(--clr-accent-c);
@@ -48,6 +52,8 @@ div.contact-widget-mail-copy-wrapper {
   flex-direction: row;
   justify-content: center;
   gap: 1em;
+  width: 50%;
+  margin: 0.2em auto;
 }
 
 @media (max-width: 980px) {

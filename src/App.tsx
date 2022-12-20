@@ -21,7 +21,7 @@ function App(props: IAppProps): JSX.Element  {
     }
     fetchAppData();
   }, []);
-
+  
   return (
     <BrowserRouter>
       <Background />

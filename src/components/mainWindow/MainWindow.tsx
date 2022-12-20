@@ -11,6 +11,8 @@ import SandboxPage from './pages/sandbox/SandboxPage';
 import { animated, useSpring } from 'react-spring';
 import { AppData } from '../../api/AppData';
 import RemoveTrailingSlash from '../removeTrailingSlash/RemoveTrailingSlash';
+import Footer from '../footer/Footer';
+import MainWrapper from './MainWrapper';
 
 interface IMainWindowProps {
   appData: AppData | undefined
@@ -47,11 +49,10 @@ function MainWindow(props: IMainWindowProps) {
       <RemoveTrailingSlash />
       <animated.main style={spring}>
         <Routes>
-          <Route path='/about' element={<AboutPage />} />
-          <Route path='/blog' element={<BlogPage blurbs={props.appData?.blurbs}/>} />
-          <Route path='/projects' element={<ProjectsPage projects={props.appData?.projects}/>} />
-          <Route path='/resume' element={<ResumePage />} />
-          <Route path='sandbox' element={<SandboxPage />}/>
+          <Route path='/about' element={<MainWrapper contents={<AboutPage />}/>} />
+          <Route path='/blog' element={<MainWrapper contents={<BlogPage blurbs={props.appData?.blurbs}/>} />} />
+          <Route path='/projects' element={<MainWrapper contents={<ProjectsPage projects={props.appData?.projects}/>} />} />
+          <Route path='/resume' element={<MainWrapper contents={<ResumePage />} />} />
           <Route path='/' element={<WelcomePage />} />
           <Route path='*' element={<Navigate replace={true} to={{pathname: '/'}} />} />
         </Routes>

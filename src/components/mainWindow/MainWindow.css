@@ -6,6 +6,9 @@ div.main-content-wrapper {
   width: min(100vw, 980px);
   margin: 0 auto;
   min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 div.main-content-wrapper h1 {
