@@ -99,8 +99,8 @@ function NavRing(props: INavRingProps): JSX.Element {
   }
 
   const handleBeginRotate = (e: React.MouseEvent): void => {
-    window.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
-    e.preventDefault();
+    // window.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
+    // e.preventDefault();
     prevRotation = rotation;
     const angle = calculateAngleFromScreenCenterToCursor(e.clientX, e.clientY);
     startAngle = angle - rotation;

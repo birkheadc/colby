@@ -9,6 +9,4 @@ div.nav-ring {
   z-index: 1;
 
   border: var(--border-nav-a);
-
-  background-color: red;
 }
