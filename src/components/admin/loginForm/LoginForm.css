@@ -1,0 +1,4 @@
+form input {
+  background-color: var(--clr-text-a);
+  color: var(--clr-bg-a);
+}

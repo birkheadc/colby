@@ -31,7 +31,7 @@ async function fetchActivities(): Promise<IActivity[] | null> {
 }
 
 async function fetchProjects(): Promise<IProject[] | null> {
-  const url: string | null = process.env.REACT_APP_PROJECTS_URL ? process.env.REACT_APP_PROJECTS_URL + '/api/projects/favorites' : null;
+  const url: string | null = process.env.REACT_APP_PROJECTS_URL ? process.env.REACT_APP_PROJECTS_URL + '/api/projects' : null;
   if (url == null) {
     console.log('Unable to fetch projects: Environment Variable not found.');
     return [];

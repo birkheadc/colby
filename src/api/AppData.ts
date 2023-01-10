@@ -10,7 +10,8 @@ export interface IProject {
   longDescriptions: IDescription[],
   technologies: string[],
   site: string,
-  source: string
+  source: string,
+  favoriteLive: number
 }
 
 export interface IBlurb {

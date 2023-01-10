@@ -13,6 +13,7 @@ import { AppData } from '../../api/AppData';
 import RemoveTrailingSlash from '../removeTrailingSlash/RemoveTrailingSlash';
 import Footer from '../footer/Footer';
 import MainWrapper from './MainWrapper';
+import AdminPage from '../admin/AdminPage';
 
 interface IMainWindowProps {
   appData: AppData | undefined
@@ -53,6 +54,7 @@ function MainWindow(props: IMainWindowProps) {
           <Route path='/blog' element={<MainWrapper contents={<BlogPage blurbs={props.appData?.blurbs}/>} />} />
           <Route path='/projects' element={<MainWrapper contents={<ProjectsPage projects={props.appData?.projects}/>} />} />
           <Route path='/resume' element={<MainWrapper contents={<ResumePage />} />} />
+          <Route path='/admin' element={<MainWrapper contents={<AdminPage />} />} />
           <Route path='/' element={<WelcomePage />} />
           <Route path='*' element={<Navigate replace={true} to={{pathname: '/'}} />} />
         </Routes>
