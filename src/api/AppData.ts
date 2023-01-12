@@ -11,7 +11,7 @@ export interface IProject {
   technologies: string[],
   site: string,
   source: string,
-  favoriteLive: number
+  favoriteLevel: number
 }
 
 export interface IBlurb {

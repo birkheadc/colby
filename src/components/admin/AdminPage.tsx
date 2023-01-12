@@ -12,7 +12,7 @@ interface IAdminPageProps {
 
 function AdminPage(props: IAdminPageProps): JSX.Element {
 
-  const [isLoading, setLoading] = React.useState<boolean>(true);
+  const [isWorking, setWorking] = React.useState<boolean>(true);
   const [isLoggedIn, setLoggedIn] = React.useState<boolean>(false);
 
   React.useEffect(() => {
@@ -22,7 +22,7 @@ function AdminPage(props: IAdminPageProps): JSX.Element {
       if (isValid === true) {
         setLoggedIn(true);
       }
-      setLoading(false);
+      setWorking(false);
 
     }
     checkLogIn();
@@ -45,9 +45,9 @@ function AdminPage(props: IAdminPageProps): JSX.Element {
   }
 
   function getContents(): JSX.Element {
-    if (isLoading === true) {
+    if (isWorking === true) {
       return (
-        <h2>Checking token...</h2>
+        <h2>Working...</h2>
       );
     }
     if (isLoggedIn === false) {
@@ -57,7 +57,7 @@ function AdminPage(props: IAdminPageProps): JSX.Element {
     }
     return (
       <>
-      <CreateProjectForm />
+      <CreateProjectForm setWorking={setWorking }/>
       <LogoutForm handleLogout={logout} />
       </>
     );
